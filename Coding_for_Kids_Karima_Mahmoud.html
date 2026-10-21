@@ -1,0 +1,3958 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Complete 8-Week Middle Grades Coding & Ethical AI Curriculum Package (Ages 10-15) - Classroom-Ready Instructional Design Portfolio"
+    />
+    <title>
+      Python Pioneers: Creative Coding &amp; Ethical AI (Ages 10–15) | Complete
+      Curriculum Package
+    </title>
+    <style>
+      /* ==========================================================================
+       RESPONSIVE & ACCESSIBLE DESIGN ARCHITECTURE NOTES
+       1. Color Palette: Engineered to exceed WCAG 2.1 AA (4.5:1) and AAA (7:1)
+          contrast ratios for body text and interactive elements.
+       2. Typography: Fluid sizing via clamp(), generous line-height (1.65),
+          and support for dyslexia-friendly font overrides.
+       3. Layout: CSS Grid & Flexbox with mobile-first breakpoints (600px, 960px, 1280px).
+       4. Accessibility Queries: Explicit support for @media (prefers-reduced-motion),
+          @media (prefers-contrast: more), and @media print for instant worksheet handouts.
+       ========================================================================== */
+
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f4f6f9;
+        --bg-accent: #eef2ff;
+        --bg-code: #1e293b;
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
+        --text-code: #f8fafc;
+        --brand-primary: #1d4ed8;
+        --brand-secondary: #0f766e;
+        --brand-accent: #b45309;
+        --border-color: #cbd5e1;
+        --focus-ring: #d97706;
+        --success-bg: #ecfdf5;
+        --success-border: #059669;
+        --warning-bg: #fffbeb;
+        --warning-border: #d97706;
+        --info-bg: #eff6ff;
+        --info-border: #2563eb;
+        --font-sans:
+          system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+          sans-serif;
+        --font-mono: "Consolas", "Monaco", "Courier New", monospace;
+        --base-size: 1rem;
+        --max-width: 1200px;
+      }
+
+      /* High Contrast Mode Override */
+      @media (prefers-contrast: more) {
+        :root {
+          --bg-primary: #ffffff;
+          --bg-secondary: #ffffff;
+          --text-primary: #000000;
+          --text-secondary: #000000;
+          --brand-primary: #000080;
+          --border-color: #000000;
+          --focus-ring: #ff0000;
+        }
+      }
+
+      /* Accessibility Utility Classes toggled via Toolbar */
+      body.large-print {
+        --base-size: 1.25rem;
+      }
+      body.dyslexia-mode {
+        --font-sans:
+          "OpenDyslexic", "Comic Sans MS", "Trebuchet MS", sans-serif;
+        letter-spacing: 0.04em;
+        word-spacing: 0.12em;
+        line-height: 1.85;
+      }
+      body.high-contrast-mode {
+        --bg-primary: #000000;
+        --bg-secondary: #111111;
+        --bg-accent: #1a1a1a;
+        --text-primary: #ffff00;
+        --text-secondary: #ffffff;
+        --brand-primary: #00ffff;
+        --brand-secondary: #00ff00;
+        --border-color: #ffffff;
+        --info-bg: #111111;
+        --success-bg: #111111;
+        --warning-bg: #111111;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 100%;
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-sans);
+        font-size: var(--base-size);
+        line-height: 1.65;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+      }
+
+      /* Skip Link for Keyboard & Screen Reader Users */
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 1rem;
+        background: var(--brand-primary);
+        color: #ffffff;
+        padding: 0.75rem 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 0 0 0.5rem 0.5rem;
+        z-index: 9999;
+        transition: top 0.2s ease;
+      }
+
+      .skip-link:focus {
+        top: 0;
+        outline: 3px solid var(--focus-ring);
+      }
+
+      /* Focus States */
+      a:focus-visible,
+      button:focus-visible,
+      summary:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--focus-ring);
+        outline-offset: 3px;
+      }
+
+      /* Header & Accessibility Toolbar */
+      header.site-header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        color: #ffffff;
+        padding: 2.5rem 1.5rem 2rem;
+        border-bottom: 5px solid var(--brand-secondary);
+      }
+
+      .header-container,
+      .main-container,
+      .nav-container,
+      .footer-container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .badge {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: #ffffff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .a11y-toolbar {
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1.5rem;
+      }
+
+      .a11y-toolbar-inner {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .a11y-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .a11y-btn {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        border: 2px solid var(--brand-primary);
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .a11y-btn:hover,
+      .a11y-btn[aria-pressed="true"] {
+        background: var(--brand-primary);
+        color: #ffffff;
+      }
+
+      /* Sticky Navigation */
+      nav.primary-nav {
+        background: var(--bg-primary);
+        border-bottom: 2px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 0.75rem 1.5rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+      }
+
+      .nav-list a {
+        display: inline-block;
+        color: var(--brand-primary);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 0.35rem 0.65rem;
+        border-radius: 0.375rem;
+        border: 1px solid transparent;
+      }
+
+      .nav-list a:hover {
+        background: var(--bg-accent);
+        border-color: var(--brand-primary);
+      }
+
+      /* Main Content Layout */
+      main {
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .deliverable-section {
+        margin-bottom: 4rem;
+        padding-top: 1rem;
+        border-top: 4px solid var(--brand-primary);
+      }
+
+      .deliverable-header {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-left: 6px solid var(--brand-primary);
+        border-radius: 0 0.5rem 0.5rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .deliverable-label {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--brand-secondary);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        line-height: 1.25;
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        margin-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: clamp(1.2rem, 2vw, 1.45rem);
+        margin-top: 1.75rem;
+        margin-bottom: 0.75rem;
+        color: var(--brand-primary);
+      }
+      h4 {
+        font-size: 1.1rem;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Grid & Cards */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 768px) {
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .card {
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+        padding: 1.25rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+
+      .callout {
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        margin: 1.25rem 0;
+        border-left: 5px solid;
+      }
+
+      .callout-info {
+        background: var(--info-bg);
+        border-color: var(--info-border);
+      }
+      .callout-success {
+        background: var(--success-bg);
+        border-color: var(--success-border);
+      }
+      .callout-warning {
+        background: var(--warning-bg);
+        border-color: var(--warning-border);
+      }
+
+      /* Responsive Accessible Tables */
+      .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        margin: 1.25rem 0;
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 650px;
+        text-align: left;
+      }
+
+      caption {
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 0.85rem 1rem;
+        background: var(--bg-secondary);
+        border-bottom: 2px solid var(--border-color);
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--bg-accent);
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      tr:nth-child(even) td {
+        background: rgba(244, 246, 249, 0.5);
+      }
+
+      /* Code Blocks */
+      pre {
+        background: var(--bg-code);
+        color: var(--text-code);
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        line-height: 1.5;
+        border: 2px solid #334155;
+        margin: 1rem 0;
+      }
+
+      code {
+        font-family: var(--font-mono);
+        background: var(--bg-secondary);
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.25rem;
+        font-size: 0.9em;
+      }
+
+      pre code {
+        background: transparent;
+        padding: 0;
+        color: inherit;
+      }
+
+      /* Materials Portfolio Items */
+      .portfolio-item {
+        border: 2px solid var(--border-color);
+        border-radius: 0.5rem;
+        margin-bottom: 1.75rem;
+        overflow: hidden;
+      }
+
+      .portfolio-item-header {
+        background: var(--bg-secondary);
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .portfolio-item-body {
+        padding: 1.25rem;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        border-radius: 0.25rem;
+        background: var(--bg-accent);
+        color: var(--brand-primary);
+        border: 1px solid var(--brand-primary);
+      }
+
+      footer.site-footer {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 2.5rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      /* Print Stylesheet for Classroom Handouts */
+      @media print {
+        .skip-link,
+        .a11y-toolbar,
+        nav.primary-nav {
+          display: none !important;
+        }
+        body {
+          font-size: 11pt;
+          color: #000000;
+          background: #ffffff;
+        }
+        .deliverable-section,
+        .portfolio-item {
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+        pre {
+          background: #f8f8f8 !important;
+          color: #000000 !important;
+          border: 1px solid #000000;
+          white-space: pre-wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Keyboard Skip Navigation -->
+    <a href="#main-content" class="skip-link"
+      >Skip directly to main curriculum content</a
+    >
+
+    <!-- Accessibility & Display Preferences Bar -->
+    <aside class="a11y-toolbar" aria-label="Accessibility and Display Settings">
+      <div class="a11y-toolbar-inner">
+        <span
+          ><strong>Universal Access Controls:</strong> Customize view for
+          classroom projection, screen readers, or print handouts.</span
+        >
+        <div
+          class="a11y-controls"
+          role="group"
+          aria-label="Visual formatting toggles"
+        >
+          <button
+            type="button"
+            class="a11y-btn"
+            id="btn-large-print"
+            aria-pressed="false"
+            onclick="toggleMode('large-print', 'btn-large-print')"
+          >
+            Large Print (125%)
+          </button>
+          <button
+            type="button"
+            class="a11y-btn"
+            id="btn-dyslexia"
+            aria-pressed="false"
+            onclick="toggleMode('dyslexia-mode', 'btn-dyslexia')"
+          >
+            Dyslexia-Friendly Spacing
+          </button>
+          <button
+            type="button"
+            class="a11y-btn"
+            id="btn-contrast"
+            aria-pressed="false"
+            onclick="toggleMode('high-contrast-mode', 'btn-contrast')"
+          >
+            High Contrast
+          </button>
+          <button type="button" class="a11y-btn" onclick="window.print()">
+            Print / Save PDF
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Site Header -->
+    <header class="site-header" role="banner">
+      <div class="header-container">
+        <div class="badge-row" aria-label="Course metadata badges">
+          <span class="badge">Ages 10–15 (Grades 5–9)</span>
+          <span class="badge">Duration: 8 Weeks (40 Hours)</span>
+          <span class="badge">Language: Python 3 + Socratic AI</span>
+          <span class="badge">CSTA, ISTE &amp; AI4K12 Aligned</span>
+          <span class="badge">WCAG 2.1 AA/AAA &amp; UDL Embedded</span>
+        </div>
+        <h1>Python Pioneers: From Algorithms to Ethical AI Co-Creation</h1>
+        <p>
+          A Comprehensive, Cumulative, AI-Enabled Middle Grades Computer Science
+          Curriculum Package
+        </p>
+      </div>
+    </header>
+
+    <!-- Sticky Section Navigation -->
+    <nav class="primary-nav" aria-label="Curriculum Deliverables Navigation">
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li><a href="#deliverable-1">1. Course Overview</a></li>
+          <li><a href="#deliverable-2">2. Curriculum Map (8 Wks)</a></li>
+          <li><a href="#deliverable-3">3. Sample Lesson Plans (3)</a></li>
+          <li><a href="#deliverable-4">4. Materials Portfolio (16)</a></li>
+          <li><a href="#deliverable-5">5. AI Integration Report</a></li>
+          <li><a href="#deliverable-6">6. Implementation Plan</a></li>
+          <li><a href="#deliverable-7">7. Reflection Essay</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Curriculum Content -->
+    <main id="main-content" class="main-container" role="main">
+      <!-- ======================================================================
+         DELIVERABLE 1: COURSE OVERVIEW DOCUMENT
+         ====================================================================== -->
+      <section
+        id="deliverable-1"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-1"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 1</span>
+          <h2 id="h2-deliv-1">Course Overview Document</h2>
+          <p>
+            Foundational architecture, target learner demographics, standards
+            rationale, schedule options, and measurable learning outcomes.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card" aria-labelledby="h3-course-id">
+            <h3 id="h3-course-id">Course Identity &amp; Grade Band</h3>
+            <ul>
+              <li>
+                <strong>Course Title:</strong>
+                <em
+                  >Python Pioneers: From Algorithms to Ethical AI
+                  Co-Creation</em
+                >
+              </li>
+              <li>
+                <strong>Target Grade Level:</strong> Grades 5–9 (Upper
+                Elementary, Middle School, and Early High School Bridge)
+              </li>
+              <li><strong>Target Age Range:</strong> 10–15 years old</li>
+              <li>
+                <strong>Prerequisites:</strong> None required. Designed with a
+                "Low-Floor, High-Ceiling, Wide-Walls" architecture to bridge
+                visual block-based coding (e.g., Scratch) into text-based Python
+                programming.
+              </li>
+              <li>
+                <strong>Primary Technologies:</strong> Python 3 (Standard
+                Library, <code>turtle</code> graphics, <code>random</code>),
+                Browser-Based Accessible IDE (EduBlocks/Trinket/VS Code for
+                Web), and a Guardrailed Socratic AI Assistant.
+              </li>
+            </ul>
+          </article>
+
+          <article class="card" aria-labelledby="h3-duration">
+            <h3 id="h3-duration">Duration &amp; Scheduling Models</h3>
+            <p>
+              <strong>Total Instructional Time:</strong> 8 Weeks (40
+              Instructional Hours)
+            </p>
+            <ul>
+              <li>
+                <strong
+                  >Model A (Standard Daily Schedule — Default Map):</strong
+                >
+                5 days/week &times; 50 minutes/day = 250 minutes/week across 8
+                weeks (40 lessons).
+              </li>
+              <li>
+                <strong
+                  >Model B (6-Week Intensive / Summer Academy
+                  Adaptation):</strong
+                >
+                5 days/week &times; 65 minutes/day across 6 weeks (condensing
+                Weeks 3–4 and Weeks 7–8 into integrated studio sprints).
+              </li>
+              <li>
+                <strong>Model C (Alternating Block Schedule):</strong> 2–3
+                sessions/week &times; 90 minutes/session across 8 weeks (pairing
+                two 45-minute daily modules per block with a 5-minute
+                kinesthetic brain break).
+              </li>
+            </ul>
+            <p><strong>Daily 50-Minute Pedagogical Rhythm:</strong></p>
+            <ol>
+              <li>
+                <strong>00–07 min:</strong> Unplugged Warm-Up / Logic Hook
+              </li>
+              <li>
+                <strong>07–20 min:</strong> Mini-Lesson &amp; Live Code Modeling
+                (PRIMM: Predict &amp; Run)
+              </li>
+              <li>
+                <strong>20–42 min:</strong> Guided Studio / Pair Programming
+                &amp; Socratic AI Debugging
+              </li>
+              <li>
+                <strong>42–50 min:</strong> Formative Exit Ticket, Code
+                Attribution Log &amp; Metacognitive Reflection
+              </li>
+            </ol>
+          </article>
+        </div>
+
+        <h3 id="h3-population">
+          Student Population &amp; Diverse Learner Profile
+        </h3>
+        <p>
+          Learners aged 10–15 span a critical developmental transition from
+          concrete operational thought to abstract, formal operational
+          reasoning. In a typical classroom of 24–30 students, prior experience
+          ranges from complete novices with limited keyboarding fluency to
+          students who have built complex Scratch games. Furthermore, this
+          course explicitly designs for neurodiversity, multilingualism, and
+          disability access from day one:
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h4>Neurodivergent Learners (ADHD, Autism, Dyslexia)</h4>
+            <p>
+              Text-based coding often triggers frustration due to invisible
+              syntax errors (missing colons, indentation mismatches, spelling).
+              This course integrates
+              <strong>dyslexia-friendly monospaced fonts</strong>, syntax
+              color-coding paired with non-color symbols, chunked 10-minute task
+              timers, visual flowcharts, and bimodal block-to-text toggles for
+              the first 3 weeks.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Multilingual Learners (MLL / ELL)</h4>
+            <p>
+              Python keywords (<code>if</code>, <code>else</code>,
+              <code>while</code>, <code>for</code>, <code>in</code>,
+              <code>def</code>, <code>return</code>) rely heavily on English
+              semantics. The curriculum provides
+              <strong>quad-lingual syntax anchor charts</strong> (English,
+              Spanish, Arabic, Mandarin + visual icons), explicit cognate
+              instruction, and permits localized variable naming and
+              native-language code comments.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Sensory, Motor &amp; Pacing Diversity</h4>
+            <p>
+              For blind/low-vision learners or students with fine-motor fatigue,
+              graphical <code>turtle</code> outputs are paired with
+              <strong>auditory/console coordinate telemetry</strong> and tactile
+              grid overlays. Parson’s Problems
+              (drag-and-drop/keyboard-reorderable code blocks) reduce typing
+              load while preserving full algorithmic rigor.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="h3-course-desc">Course Description</h3>
+        <div class="callout callout-info">
+          <p>
+            <strong>Catalog Description:</strong> How do apps think, how do
+            video games make decisions, and how does Artificial Intelligence
+            actually work? In
+            <em>Python Pioneers: From Algorithms to Ethical AI Co-Creation</em>,
+            students aged 10–15 transition from technology consumers to
+            empowered software creators. Over 8 cumulative weeks, learners
+            master core computer science concepts—algorithms, variables, data
+            types, coordinate graphics, conditional logic, loops, modular
+            functions, and lists—using Python, one of the world's most popular
+            programming languages. Rather than banning AI or allowing it to
+            write code for them, students learn to collaborate with a Socratic
+            AI assistant as a "debugging co-pilot" and "thought partner."
+            Through unplugged movement games, pair-programming challenges,
+            generative digital art, and an open-ended Capstone Showcase,
+            students build computational fluency, resilience, and critical
+            ethical literacy around algorithmic bias, data privacy, and
+            human-centered design.
+          </p>
+        </div>
+
+        <h3 id="h3-standards">
+          Standards Addressed (Explicit Code &amp; Pedagogical Rationale)
+        </h3>
+        <div
+          class="table-responsive"
+          tabindex="0"
+          role="region"
+          aria-labelledby="caption-standards"
+        >
+          <table>
+            <caption id="caption-standards">
+              Table 1.1: Alignment to CSTA K-12 (Level 2: Ages 11–14), ISTE
+              Student Standards, and AI4K12 Guidelines
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Framework &amp; Code</th>
+                <th scope="col">Official Standard Statement</th>
+                <th scope="col">
+                  Explicit Pedagogical Rationale in This Course
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CSTA 2-AP-10</strong></td>
+                <td>
+                  Use flowcharts and/or pseudocode to address complex problems
+                  as algorithms.
+                </td>
+                <td>
+                  Before writing syntax in Weeks 1, 4, and 7, students map
+                  program logic using accessible flowcharts and plain-language
+                  pseudocode, separating conceptual logic from Python syntax
+                  errors.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-AP-11</strong></td>
+                <td>
+                  Create clearly named variables that represent different data
+                  types and perform operations on their values.
+                </td>
+                <td>
+                  Addressed in Weeks 2 and 6 as students build interactive
+                  console applications using strings, integers, floats,
+                  booleans, and lists with snake_case naming conventions.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-AP-12</strong></td>
+                <td>
+                  Design and iteratively develop programs that combine control
+                  structures, including nested loops and compound conditionals.
+                </td>
+                <td>
+                  Core focus of Weeks 4 and 5: students combine
+                  <code>if/elif/else</code> with boolean operators
+                  (<code>and</code>, <code>or</code>, <code>not</code>) and
+                  nested <code>for</code>/<code>while</code> loops to build
+                  generative art and adventure games.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-AP-13</strong></td>
+                <td>
+                  Decompose problems and subproblems into parts to facilitate
+                  the design, implementation, and review of programs.
+                </td>
+                <td>
+                  Operationalized in Weeks 6–8 where learners break complex
+                  capstone games/tools into modular, reusable Python functions
+                  (<code>def</code>) and test each function independently.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-AP-16</strong></td>
+                <td>
+                  Incorporate existing code, media, and libraries into original
+                  programs, and give attribution.
+                </td>
+                <td>
+                  Students import Python libraries (<code>turtle</code>,
+                  <code>random</code>, <code>time</code>) and maintain an
+                  explicit <em>AI &amp; Peer Attribution Log</em> documenting
+                  any Socratic AI hints or remixed starter code.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-AP-17</strong></td>
+                <td>
+                  Systematically test and refine programs using a range of test
+                  cases.
+                </td>
+                <td>
+                  Students use boundary cases, invalid user inputs, and
+                  AI-generated edge cases in Weeks 4, 6, and 7 to harden their
+                  programs against runtime crashes.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CSTA 2-IC-20</strong></td>
+                <td>
+                  Compare tradeoffs associated with computing technologies that
+                  affect people's everyday activities and career options.
+                </td>
+                <td>
+                  Embedded throughout and culminating in Week 8 as students
+                  evaluate generative AI hallucinations, training data bias,
+                  environmental energy tradeoffs, and human authorship.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>ISTE 1.1.c</strong></td>
+                <td>
+                  Students use technology to seek feedback that informs and
+                  improves their practice and to demonstrate their learning in a
+                  variety of ways.
+                </td>
+                <td>
+                  Students query a Socratic AI assistant using structured prompt
+                  templates to receive immediate formative feedback on compiler
+                  tracebacks without receiving full solution spoilers.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>ISTE 1.5.c</strong></td>
+                <td>
+                  Students break problems into component parts, extract key
+                  information, and develop descriptive models to understand
+                  complex systems.
+                </td>
+                <td>
+                  Supports system modeling during the Week 7–8 Capstone Sprint
+                  using structured decomposition blueprints.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>AI4K12 Big Idea 3 &amp; 5</strong></td>
+                <td>
+                  Computers learn from data (Idea 3); AI applications can impact
+                  society in both positive and negative ways (Idea 5).
+                </td>
+                <td>
+                  Students investigate how Large Language Models predict tokens
+                  statistically (rather than "thinking") and audit AI outputs
+                  for stereotyping and factual errors.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="h3-objectives">
+          Measurable Course Learning Objectives (Bloom's Revised Taxonomy)
+        </h3>
+        <ol>
+          <li>
+            <strong
+              >Algorithmic Design (Analyze / Create — CSTA 2-AP-10, ISTE
+              1.5.c):</strong
+            >
+            Given a real-world problem or game mechanic, students will decompose
+            the task into a sequential flowchart and pseudocode algorithm
+            containing at least three distinct control states with 90% logical
+            accuracy on the Capstone Blueprint Rubric.
+          </li>
+          <li>
+            <strong
+              >Data Representation &amp; Manipulation (Apply — CSTA
+              2-AP-11):</strong
+            >
+            Students will construct interactive Python programs that declare,
+            cast, and manipulate at least four data types (<code>str</code>,
+            <code>int</code>, <code>float</code>, <code>bool</code>) and dynamic
+            <code>list</code> structures to store and update user state without
+            TypeError exceptions.
+          </li>
+          <li>
+            <strong>Control Flow Mastery (Create — CSTA 2-AP-12):</strong>
+            Students will author original Python scripts that integrate compound
+            conditionals (<code>if/elif/else</code> with <code>and/or</code>)
+            and iterative loops (<code>for</code> and <code>while</code>) to
+            generate geometric patterns and branching interactive narratives.
+          </li>
+          <li>
+            <strong
+              >Modular Abstraction (Evaluate / Create — CSTA 2-AP-13):</strong
+            >
+            Students will refactor repetitive code into custom functions
+            (<code>def</code>) utilizing parameters and return values, reducing
+            code duplication by at least 40% in their Week 6 and Week 8 project
+            submissions.
+          </li>
+          <li>
+            <strong
+              >Systematic Debugging &amp; Socratic AI Co-Creation (Evaluate —
+              CSTA 2-AP-17, ISTE 1.1.c):</strong
+            >
+            When encountering syntax, runtime, or logic errors, students will
+            apply a 5-step debugging protocol and formulate Socratic AI prompts
+            to diagnose root causes, resolving at least 4 out of 5 seeded bugs
+            independently on the Practical Debugging Assessment.
+          </li>
+          <li>
+            <strong
+              >Ethical AI Literacy &amp; Attribution (Evaluate — CSTA 2-AP-16,
+              2-IC-20, AI4K12):</strong
+            >
+            Students will critically audit AI-generated suggestions for accuracy
+            and bias, and maintain a complete, transparent AI Attribution Log
+            across all summative projects with 100% compliance.
+          </li>
+        </ol>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 2: CURRICULUM MAP (8-WEEK SCOPE & SEQUENCE)
+         ====================================================================== -->
+      <section
+        id="deliverable-2"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-2"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 2</span>
+          <h2 id="h2-deliv-2">
+            8-Week Curriculum Map &amp; Traceability Matrix
+          </h2>
+          <p>
+            Week-by-week scope and sequence, 40 daily lesson titles, explicit
+            standards traceability, and cumulative assessment progression.
+          </p>
+        </div>
+
+        <div
+          class="table-responsive"
+          tabindex="0"
+          role="region"
+          aria-labelledby="caption-curric-map"
+        >
+          <table>
+            <caption id="caption-curric-map">
+              Table 2.1: Complete 8-Week Scope, Sequence, Daily Lesson Titles,
+              Standards, and Assessments
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 12%">Week &amp; Theme</th>
+                <th scope="col" style="width: 36%">
+                  Daily Lesson Titles (Mon–Fri, 50 min/day)
+                </th>
+                <th scope="col" style="width: 18%">
+                  Core CS &amp; AI Concepts
+                </th>
+                <th scope="col" style="width: 14%">Standards Traceability</th>
+                <th scope="col" style="width: 20%">
+                  Formative &amp; Summative Assessments
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Week 1</strong><br />Computational Thinking,
+                  Algorithms &amp; What AI Really Is
+                </td>
+                <td>
+                  <strong>L1.1:</strong> Welcome to the Studio &amp; The
+                  "Robo-Chef" Unplugged Algorithm<br />
+                  <strong>L1.2:</strong> Decomposition &amp; Pattern Recognition
+                  in Everyday Games<br />
+                  <strong>L1.3:</strong> Mapping Logic: Flowcharts, Pseudocode
+                  &amp; Decision Trees<br />
+                  <strong>L1.4:</strong> How Machines "Learn": Rules-Based Code
+                  vs. AI Token Prediction<br />
+                  <strong>L1.5:</strong> First Contact: Navigating the Python
+                  IDE &amp; Accessibility Tools
+                </td>
+                <td>
+                  Algorithms, sequence, precision, decomposition, pseudocode,
+                  rules-based vs. probabilistic AI, IDE navigation.
+                </td>
+                <td>
+                  CSTA 2-AP-10<br />CSTA 2-AP-13<br />CSTA 2-IC-20<br />ISTE
+                  1.5.c<br />AI4K12 Idea 3
+                </td>
+                <td>
+                  <strong>Diagnostic:</strong> Pre-Course Computational Thinking
+                  Survey (Mat. #1)<br />
+                  <strong>Formative:</strong> Unplugged Algorithm Peer Test
+                  (Mat. #2)<br />
+                  <strong>Checkpoint 1:</strong> Morning Routine Flowchart &amp;
+                  First <code>print()</code> Art
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 2</strong><br />Hello, Python! Variables, Data
+                  Types &amp; Interactive I/O
+                </td>
+                <td>
+                  <strong>L2.1:</strong> Speaking Python: <code>print()</code>,
+                  Strings, and ASCII Expression<br />
+                  <strong>L2.2:</strong> Memory Boxes: Variables, Naming Rules
+                  &amp; Core Data Types <em>[Sample Plan 1]</em><br />
+                  <strong>L2.3:</strong> Listening to the User:
+                  <code>input()</code> and String Concatenation / f-strings<br />
+                  <strong>L2.4:</strong> Math in Motion: Integers, Floats,
+                  Operators &amp; Type Casting (<code>int()</code>,
+                  <code>str()</code>)<br />
+                  <strong>L2.5:</strong> Mini-Project Studio: Interactive Story
+                  &amp; Custom Calculator
+                </td>
+                <td>
+                  Syntax vs. semantics, <code>str</code>, <code>int</code>,
+                  <code>float</code>, variables, assignment (<code>=</code>),
+                  <code>input()</code>, type casting, f-strings,
+                  <code>TypeError</code>.
+                </td>
+                <td>CSTA 2-AP-11<br />CSTA 2-AP-17<br />ISTE 1.1.c</td>
+                <td>
+                  <strong>Formative:</strong> PRIMM Variables Worksheet (Mat.
+                  #4)<br />
+                  <strong>Summative Mini-Project 1:</strong> Interactive
+                  Mad-Libs / Pet Care Calculator (Mat. #11)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 3</strong><br />Visual Algorithms: Coordinate
+                  Geometry &amp; Python <code>turtle</code>
+                </td>
+                <td>
+                  <strong>L3.1:</strong> Importing Superpowers: The
+                  <code>turtle</code> Library &amp; Cartesian Grid<br />
+                  <strong>L3.2:</strong> Angles, Turns, and Colors: Drawing
+                  Polygons &amp; Accessibility Telemetry<br />
+                  <strong>L3.3:</strong> Pen Control: <code>penup()</code>,
+                  <code>pendown()</code>, <code>goto(x,y)</code>, and
+                  Layering<br />
+                  <strong>L3.4:</strong> Refactoring Hardcoded Values: Using
+                  Variables to Scale Digital Art<br />
+                  <strong>L3.5:</strong> Gallery Walk: Cultural Geometric
+                  Patterns &amp; Pixel Badge Challenge
+                </td>
+                <td>
+                  Libraries (<code>import</code>), Cartesian coordinates
+                  <code>(x,y)</code>, exterior angles, state machines (pen
+                  state), variable parameterization.
+                </td>
+                <td>
+                  CSTA 2-AP-10<br />CSTA 2-AP-11<br />CSTA 2-AP-16<br />ISTE
+                  1.4.a
+                </td>
+                <td>
+                  <strong>Formative:</strong> Coordinate Grid Audio-Tactile
+                  Mapping Check (Mat. #9)<br />
+                  <strong>Checkpoint 2:</strong> Scalable Personal Crest /
+                  Cultural Mosaic Script
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 4</strong><br />Decision Makers: Booleans,
+                  Conditionals &amp; Branching Logic
+                </td>
+                <td>
+                  <strong>L4.1:</strong> True or False? Boolean Logic &amp;
+                  Comparison Operators (<code>==, !=, &lt;, &gt;</code>)<br />
+                  <strong>L4.2:</strong> Forks in the Road: <code>if</code> and
+                  <code>else</code> Statements &amp; Indentation Rules<br />
+                  <strong>L4.3:</strong> Multi-Path Logic: <code>elif</code> and
+                  Compound Operators (<code>and, or, not</code>)
+                  <em>[Sample Plan 2]</em><br />
+                  <strong>L4.4:</strong> Adding Chance: The
+                  <code>random</code> Module &amp; Edge-Case Testing<br />
+                  <strong>L4.5:</strong> Mini-Project Studio:
+                  Choose-Your-Own-Adventure / Trivia Engine
+                </td>
+                <td>
+                  Booleans, relational operators, indentation blocks,
+                  <code>if/elif/else</code>, truth tables,
+                  <code>random.randint()</code>, boundary testing.
+                </td>
+                <td>
+                  CSTA 2-AP-12<br />CSTA 2-AP-16<br />CSTA 2-AP-17<br />ISTE
+                  1.5.c
+                </td>
+                <td>
+                  <strong>Formative:</strong> Accessible Parson's Problem Set
+                  (Mat. #5)<br />
+                  <strong>Summative Mid-Course Quiz:</strong> Weeks 1–4 Concepts
+                  (Mat. #10)<br />
+                  <strong>Summative Mini-Project 2:</strong> Branching Quest
+                  Engine
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 5</strong><br />The Power of Repetition:
+                  <code>for</code> &amp; <code>while</code> Loops
+                </td>
+                <td>
+                  <strong>L5.1:</strong> Don't Repeat Yourself (DRY): Definite
+                  Iteration with <code>for</code> and <code>range()</code><br />
+                  <strong>L5.2:</strong> Spiral Art: Combining
+                  <code>for</code> Loops with <code>turtle</code> Geometry<br />
+                  <strong>L5.3:</strong> Indefinite Iteration: Event-Driven
+                  <code>while</code> Loops &amp; Game Loops<br />
+                  <strong>L5.4:</strong> Taming the Infinite Loop: Loop Control,
+                  Counters &amp; Trace Tables<br />
+                  <strong>L5.5:</strong> Nested Loops: Building Grid Worlds
+                  &amp; Generative Spirographs
+                </td>
+                <td>
+                  DRY principle, <code>for</code> loops,
+                  <code>range(start, stop, step)</code>,
+                  <code>while</code> loops, sentinel values, infinite loop
+                  prevention, nested iteration.
+                </td>
+                <td>CSTA 2-AP-12<br />CSTA 2-AP-17<br />ISTE 1.4.a</td>
+                <td>
+                  <strong>Formative:</strong> Loop Trace Table &amp; Bug Hunt
+                  (Mat. #7)<br />
+                  <strong>Checkpoint 3:</strong> Generative Loop Art or Number
+                  Guessing Game with Replay Loop
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 6</strong><br />Modularity, Lists &amp; Socratic
+                  AI Co-Piloting
+                </td>
+                <td>
+                  <strong>L6.1:</strong> Collections of Data: Python Lists,
+                  Indexing, <code>append()</code> &amp; Iteration<br />
+                  <strong>L6.2:</strong> Recipe Building: Defining Custom
+                  Functions (<code>def</code>) for Reusability<br />
+                  <strong>L6.3:</strong> Customizing Behavior: Function
+                  Parameters, Arguments &amp; Return Values<br />
+                  <strong>L6.4:</strong> AI as Debugging Co-Pilot: Socratic
+                  Prompting &amp; Modular Art <em>[Sample Plan 3]</em><br />
+                  <strong>L6.5:</strong> Auditing the AI: Hallucinations, Bias
+                  &amp; Attribution Practice
+                </td>
+                <td>
+                  Lists (0-indexed), mutability, modular decomposition,
+                  <code>def</code>, parameters, scope, Socratic prompt
+                  engineering, AI code verification.
+                </td>
+                <td>
+                  CSTA 2-AP-11<br />CSTA 2-AP-13<br />CSTA 2-AP-16<br />CSTA
+                  2-IC-20<br />ISTE 1.1.c, 1.2.b<br />AI4K12 Idea 5
+                </td>
+                <td>
+                  <strong>Formative:</strong> Socratic AI Prompt Log &amp;
+                  Critique (Mat. #8 &amp; #15)<br />
+                  <strong>Summative Mini-Project 3:</strong> Modular Scene
+                  Generator or Inventory Manager
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 7</strong><br />Software Engineering &amp;
+                  Capstone Design Sprint
+                </td>
+                <td>
+                  <strong>L7.1:</strong> Capstone Launch: Ideation, Choice
+                  Pathways &amp; User Empathy<br />
+                  <strong>L7.2:</strong> Architecture Day: System Decomposition
+                  Blueprint &amp; MVP Scoping<br />
+                  <strong>L7.3:</strong> Sprint 1: Building Core Functions &amp;
+                  Data Structures<br />
+                  <strong>L7.4:</strong> Sprint 2: Integrating Control Loops,
+                  User Input &amp; Error Handling<br />
+                  <strong>L7.5:</strong> Quality Assurance: Peer Playtesting
+                  &amp; Systematic Test Cases
+                </td>
+                <td>
+                  Minimum Viable Product (MVP), top-down design, iterative
+                  sprints, defensive programming, peer code review, usability
+                  testing.
+                </td>
+                <td>
+                  CSTA 2-AP-10<br />CSTA 2-AP-12<br />CSTA 2-AP-13<br />CSTA
+                  2-AP-17<br />ISTE 1.4.a, 1.5.c
+                </td>
+                <td>
+                  <strong>Formative:</strong> Capstone Pitch &amp; Decomposition
+                  Blueprint (Mat. #12)<br />
+                  <strong>Formative:</strong> Peer Code Review Protocol Sheet
+                  (Mat. #13)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Week 8</strong><br />Refinement, Ethical AI Showcase
+                  &amp; Reflection
+                </td>
+                <td>
+                  <strong>L8.1:</strong> Sprint 3: Acting on Peer Feedback,
+                  Accessibility Polish &amp; Documentation<br />
+                  <strong>L8.2:</strong> Finalizing Code Comments, Readability
+                  &amp; AI Attribution Logs<br />
+                  <strong>L8.3:</strong> Rehearsal: Preparing Multimodal Project
+                  Demonstrations<br />
+                  <strong>L8.4:</strong> Python Pioneers Showcase: Interactive
+                  Arcade &amp; Gallery Walk<br />
+                  <strong>L8.5:</strong> Debrief: Ethics of AI in Our Future
+                  &amp; Metacognitive Growth Portfolio
+                </td>
+                <td>
+                  Code documentation, docstrings, ethical attribution, technical
+                  communication, metacognitive reflection.
+                </td>
+                <td>
+                  CSTA 2-AP-16<br />CSTA 2-IC-20<br />ISTE 1.1.c, 1.2.b<br />AI4K12
+                  Idea 5
+                </td>
+                <td>
+                  <strong>Summative Capstone Evaluation:</strong> Master 4-Point
+                  Capstone Rubric (Mat. #14)<br />
+                  <strong>Summative Compliance:</strong> AI Attribution Log
+                  (Mat. #15)<br />
+                  <strong>Post-Assessment:</strong> Self-Assessment &amp; Growth
+                  Journal (Mat. #16)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="h3-assess-prog">
+          Assessment Progression &amp; Spiral Architecture
+        </h3>
+        <p>
+          Assessment in this curriculum is designed around a
+          <strong>low-stakes, high-feedback spiral</strong> so that errors are
+          normalized as essential data points in the software engineering
+          process:
+        </p>
+        <ul>
+          <li>
+            <strong
+              >Tier 1 — Daily Micro-Checks (Formative,
+              Unscored/Completion):</strong
+            >
+            3-minute PRIMM predictions ("What will line 4 output?"),
+            Fist-to-Five confidence polls, and console traceback exit tickets.
+          </li>
+          <li>
+            <strong
+              >Tier 2 — Bi-Weekly Checkpoints &amp; Parson's Problems
+              (Formative/Diagnostic):</strong
+            >
+            Reordering scrambled code blocks and debugging broken scripts to
+            verify syntax comprehension before open-ended creation.
+          </li>
+          <li>
+            <strong
+              >Tier 3 — Bi-Weekly Mini-Projects (Summative, Weeks 2, 4,
+              6):</strong
+            >
+            Short studio builds where students choose the theme (e.g., sports
+            trivia, fantasy quest, music quiz, environmental calculator) while
+            demonstrating common technical criteria.
+          </li>
+          <li>
+            <strong
+              >Tier 4 — Weeks 7–8 Capstone &amp; Multimodal Defense
+              (Summative):</strong
+            >
+            Students design an original application (Interactive Educational
+            Game, Generative Data Visualizer, Community Helper Tool, or
+            Storytelling Engine) and explain their code via live demo,
+            screen-recorded walkthrough, or annotated code tour.
+          </li>
+        </ul>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 3: SAMPLE LESSON PLANS (THREE COMPLETE, DISTINCT PLANS)
+         ====================================================================== -->
+      <section
+        id="deliverable-3"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-3"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 3</span>
+          <h2 id="h2-deliv-3">Three Complete, Distinct Sample Lesson Plans</h2>
+          <p>
+            Exemplifying three distinct instructional strategies: (1) Direct
+            Instruction with Guided PRIMM Scaffolding, (2) Collaborative Pair
+            Programming &amp; Parson's Problems, and (3) Project-Based Inquiry
+            with Socratic AI Co-Piloting.
+          </p>
+        </div>
+
+        <!-- LESSON PLAN 1 -->
+        <article class="portfolio-item" aria-labelledby="h3-lp1">
+          <div class="portfolio-item-header">
+            <div>
+              <span class="tag"
+                >Strategy 1: Direct Instruction + PRIMM (I Do, We Do, You
+                Do)</span
+              >
+              <h3 id="h3-lp1" style="margin: 0.35rem 0 0">
+                Lesson Plan 1 (Week 2, Lesson 2.2): Memory Boxes — Variables,
+                Naming Rules &amp; Core Data Types
+              </h3>
+            </div>
+            <span
+              ><strong>Duration:</strong> 50 Minutes |
+              <strong>Ages:</strong> 10–15</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <div class="grid-2">
+              <div>
+                <h4>Standards &amp; Measurable Objectives</h4>
+                <ul>
+                  <li>
+                    <strong>Standard:</strong> CSTA 2-AP-11 (Create clearly
+                    named variables that represent different data types and
+                    perform operations on their values).
+                  </li>
+                  <li>
+                    <strong>Content Objective:</strong> Students will declare,
+                    update, and print Python variables of three data types
+                    (<code>str</code>, <code>int</code>, <code>float</code>)
+                    using valid <code>snake_case</code> identifiers with 100%
+                    syntax validity.
+                  </li>
+                  <li>
+                    <strong>Language Objective (MLL):</strong> Students will
+                    orally or in writing explain the difference between the
+                    assignment operator (<code>=</code> meaning "gets/stores")
+                    and mathematical equality using sentence stems and bilingual
+                    glossary cards.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4>Materials &amp; Setup</h4>
+                <ul>
+                  <li>
+                    3 Clear Plastic Storage Bins labeled with dry-erase tape
+                    (<code>player_name</code>, <code>high_score</code>,
+                    <code>health_points</code>)
+                  </li>
+                  <li>
+                    Index cards in 3 colors: Pink (Strings with quotation
+                    marks), Blue (Integers), Yellow (Floats with decimals)
+                  </li>
+                  <li>Student IDE with Lesson 2.2 PRIMM Starter File loaded</li>
+                  <li>
+                    Material #3 (Bilingual Syntax Glossary) &amp; Material #4
+                    (PRIMM Worksheet)
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h4>Instructional Sequence (50 Minutes)</h4>
+            <ol>
+              <li>
+                <strong
+                  >00–08 min | Unplugged Hook ("The Physical Memory
+                  Box"):</strong
+                >
+                <p>
+                  <em>Teacher Action:</em> Hold up the clear bin labeled
+                  <code>player_name</code>. Place a pink index card reading
+                  <code>"Amina"</code> inside. Ask: "If I tell the computer
+                  <code>print(player_name)</code>, does it shout the word
+                  <code>player_name</code> or does it look inside the box and
+                  shout <code>Amina</code>?" Next, take out
+                  <code>"Amina"</code> and put in <code>"Leo"</code>. Explain
+                  that a bin can only hold one card at a time unless it's a
+                  collection list; reassigning overwrites the old value.
+                </p>
+                <p>
+                  <em>UDL Representation:</em> Concrete kinesthetic metaphor
+                  anchors abstract RAM memory allocation before a single line of
+                  code is typed.
+                </p>
+              </li>
+              <li>
+                <strong
+                  >08–20 min | Direct Instruction &amp; "I Do / We Do" Live
+                  Modeling (PRIMM: Predict &amp; Run):</strong
+                >
+                <p>
+                  <em>Teacher Action:</em> Display the starter code below
+                  without running it. Guide students to write their prediction
+                  on Material #4 (or record a 15-second voice note prediction).
+                </p>
+                <pre tabindex="0"><code># Lesson 2.2: I Do / We Do Starter Code
+hero_name = "Zara the Bold"   # String (str) - text inside quotes
+level = 4                     # Integer (int) - whole number
+stamina = 92.5                # Float (float) - decimal number
+
+print("Hero:", hero_name)
+print("Current Level:", level)
+
+# Level up event!
+level = level + 1
+print("New Level:", level)
+print("Data type of stamina is:", type(stamina))</code></pre>
+                <p>
+                  <em>Explicit Teaching Points:</em> (1) In Python,
+                  <code>=</code> is pronounced "gets" or "is assigned," NOT
+                  "equals." Read <code>level = level + 1</code> from right to
+                  left: "Take the current value of <code>level</code> (4), add 1
+                  to get 5, and store 5 back into the <code>level</code> box."
+                  (2) Introduce <code>snake_case</code> rules (no spaces, cannot
+                  start with a number).
+                </p>
+              </li>
+              <li>
+                <strong
+                  >20–32 min | Guided Practice ("We Do" — Investigate &amp;
+                  Modify):</strong
+                >
+                <p>
+                  Students run the code in their IDE and answer three guided
+                  investigation prompts in pairs: (a) What happens if you remove
+                  the quotes around <code>Zara the Bold</code>? (Triggers
+                  <code>NameError</code> / <code>SyntaxError</code>). (b) What
+                  happens if you rename <code>hero_name</code> to
+                  <code>hero name</code> with a space? (c) Modify line 10 so
+                  that <code>stamina</code> decreases by <code>15.2</code> and
+                  prints the updated result.
+                </p>
+              </li>
+              <li>
+                <strong
+                  >32–44 min | Independent Application ("You Do" —
+                  Make):</strong
+                >
+                <p>
+                  Students create a new file <code>avatar_card.py</code> that
+                  defines at least 4 variables representing a fictional
+                  character, historical figure, or favorite athlete (at least
+                  one <code>str</code>, one <code>int</code>, one
+                  <code>float</code>), updates at least one numerical variable
+                  using math, and outputs a formatted stats card.
+                </p>
+              </li>
+              <li>
+                <strong>44–50 min | Formative Assessment &amp; Closure:</strong>
+                <p>
+                  <strong>Exit Ticket ("Spot the 3 Bugs"):</strong> Students
+                  examine a 4-line snippet on the board (<code
+                    >1st_place = "Sam"</code
+                  >, <code>score = "100" + 50</code>, <code>print(Score)</code>)
+                  and identify the naming error, type mismatch error, and
+                  capitalization error.
+                </p>
+              </li>
+            </ol>
+
+            <div class="callout callout-success">
+              <h4>Differentiation, Scaffolding &amp; Accessibility Notes</h4>
+              <ul>
+                <li>
+                  <strong
+                    >Support / Tier 1 (Ages 10–11 or Emerging Coders):</strong
+                  >
+                  Provide pre-commented fill-in-the-blank code templates and
+                  allow bimodal block-to-text toggle in EduBlocks so students
+                  see the visual shape of string vs. number blocks.
+                </li>
+                <li>
+                  <strong
+                    >Extension / Tier 3 (Ages 13–15 or Experienced
+                    Coders):</strong
+                  >
+                  Challenge students to use <code>f-strings</code> (e.g.,
+                  <code>print(f"{hero_name} has {stamina:.1f}% stamina")</code>)
+                  and explore boolean flags (<code>is_shield_active = True</code
+                  >).
+                </li>
+                <li>
+                  <strong>Screen-Reader &amp; Dyslexia Access:</strong> All code
+                  comments include explicit verbal pronunciation guides for
+                  punctuation (`# = means 'is assigned'`).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- LESSON PLAN 2 -->
+        <article class="portfolio-item" aria-labelledby="h3-lp2">
+          <div class="portfolio-item-header">
+            <div>
+              <span class="tag"
+                >Strategy 2: Collaborative Learning (Structured Pair Programming
+                &amp; Parson's Problems)</span
+              >
+              <h3 id="h3-lp2" style="margin: 0.35rem 0 0">
+                Lesson Plan 2 (Week 4, Lesson 4.3): Multi-Path Logic — Compound
+                Conditionals in an Adventure Engine
+              </h3>
+            </div>
+            <span
+              ><strong>Duration:</strong> 50 Minutes |
+              <strong>Ages:</strong> 10–15</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <div class="grid-2">
+              <div>
+                <h4>Standards &amp; Measurable Objectives</h4>
+                <ul>
+                  <li>
+                    <strong>Standards:</strong> CSTA 2-AP-12 (Compound
+                    conditionals), CSTA 2-AP-17 (Systematic test cases).
+                  </li>
+                  <li>
+                    <strong>Content Objective:</strong> Working in
+                    Driver/Navigator pairs, students will construct a branching
+                    Python decision tree using <code>if</code>,
+                    <code>elif</code>, <code>else</code>, and compound boolean
+                    operators (<code>and</code>, <code>or</code>) and verify all
+                    branches using a 4-case truth table.
+                  </li>
+                  <li>
+                    <strong>Collaborative Objective:</strong> Students will
+                    execute Driver and Navigator roles equitably, switching at
+                    the 10-minute chime and using respectful debugging sentence
+                    stems.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4>Materials &amp; Setup</h4>
+                <ul>
+                  <li>
+                    Material #5: Accessible Parson's Problem Set (Tactile paper
+                    strips + digital keyboard-sortable version)
+                  </li>
+                  <li>
+                    Material #6: Pair Programming Driver &amp; Navigator Role
+                    Cards on each desk
+                  </li>
+                  <li>
+                    Visual Classroom Timer with gentle audio/visual role-switch
+                    chime
+                  </li>
+                  <li>Shared Python IDE workspace</li>
+                </ul>
+              </div>
+            </div>
+
+            <h4>Instructional Sequence (50 Minutes)</h4>
+            <ol>
+              <li>
+                <strong
+                  >00–07 min | Collaborative Warm-Up ("Human Truth
+                  Table"):</strong
+                >
+                <p>
+                  <em>Teacher Action:</em> Project two rules on the screen:
+                  <code
+                    >Rule A (AND): Stand up IF you are wearing sneakers AND your
+                    birthday is in a summer month.</code
+                  >
+                  <code
+                    >Rule B (OR): Stand up IF you are wearing sneakers OR your
+                    birthday is in a summer month.</code
+                  >
+                  Students physically test both rules and observe why
+                  <code>or</code> includes many more people than
+                  <code>and</code>. Connect directly to Python's boolean
+                  evaluation.
+                </p>
+              </li>
+              <li>
+                <strong
+                  >07–18 min | Collaborative Parson's Problem (Low-Typing
+                  Cognitive Focus):</strong
+                >
+                <p>
+                  Before typing from scratch, pairs receive 8 scrambled lines of
+                  Python code (Material #5) representing a theme-park roller
+                  coaster safety check. One partner reads the logic aloud while
+                  the other arranges the strips (including physical indentation
+                  tabs of 4 spaces). Pairs must explain why the order of
+                  <code>if</code> and <code>elif</code> matters (e.g., checking
+                  the strictest condition
+                  <code>height &gt;= 120 and has_ticket == "yes"</code> first).
+                </p>
+              </li>
+              <li>
+                <strong
+                  >18–42 min | Structured Pair Programming Studio (2 &times;
+                  12-Minute Sprints):</strong
+                >
+                <p>
+                  <em>Protocol:</em> Partner A is the
+                  <strong>Driver</strong> (hands on keyboard/mouse, translates
+                  ideas into syntax). Partner B is the
+                  <strong>Navigator</strong> (reads prompt card, checks
+                  colons/indentation, consults syntax chart, proposes test
+                  cases). At Minute 30, the chime sounds and roles strictly
+                  swap.
+                </p>
+                <p>
+                  <em>Task:</em> Pairs co-author a 3-choice scene for an
+                  interactive game (e.g., crossing a lava bridge, diagnosing a
+                  sick plant in a greenhouse, or choosing a soccer penalty
+                  strategy):
+                </p>
+                <pre
+                  tabindex="0"
+                ><code># Lesson 4.3 Pair Programming Starter Template
+print("=== THE CRYSTAL CAVE GUARDIAN ===")
+has_key = input("Do you have the bronze key? (yes/no): ").strip().lower()
+magic_energy = int(input("Enter your magic energy level (0-100): "))
+
+# Partner A (Driver Sprint 1): Complete the compound AND branch
+if has_key == "yes" and magic_energy >= 50:
+    print("Success! The key glows and the heavy crystal door opens.")
+
+# Partner B (Driver Sprint 2): Add two elif branches using OR / comparisons and an else catch-all
+elif has_key == "yes" and magic_energy < 50:
+    print("You have the key, but need at least 50 energy to turn the ancient lock!")
+elif has_key == "no" and magic_energy >= 80:
+    print("No key, but your high magic energy teleports you through the keyhole!")
+else:
+    print("The door remains sealed. Rest and search the forest for the bronze key.")</code></pre>
+              </li>
+              <li>
+                <strong
+                  >42–50 min | Cross-Pair Playtesting &amp; Collaborative
+                  Reflection:</strong
+                >
+                <p>
+                  Each pair swaps seats with an adjacent pair and runs 4
+                  systematic test cases against their neighbors' program to
+                  ensure every single branch (<code>if</code>, both
+                  <code>elif</code>s, and <code>else</code>) can actually be
+                  reached (no "dead code"). Partners complete a 1-minute peer
+                  collaboration check.
+                </p>
+              </li>
+            </ol>
+
+            <div class="callout callout-success">
+              <h4>Differentiation, Scaffolding &amp; Accessibility Notes</h4>
+              <ul>
+                <li>
+                  <strong
+                    >Social-Emotional &amp; Neurodivergent Support:</strong
+                  >
+                  Students who experience high social anxiety or sensory
+                  overload may opt into "Asynchronous Pairing" (co-developing
+                  adjacent modules and exchanging structured written test cases)
+                  or work with a pre-agreed communication script (Material #6).
+                </li>
+                <li>
+                  <strong>Input Normalization Scaffold:</strong> Provide
+                  explicit instruction on why
+                  <code>.strip().lower()</code> prevents frustrating bugs when a
+                  user types <code>"Yes "</code> instead of <code>"yes"</code>.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- LESSON PLAN 3 -->
+        <article class="portfolio-item" aria-labelledby="h3-lp3">
+          <div class="portfolio-item-header">
+            <div>
+              <span class="tag"
+                >Strategy 3: Project-Based Inquiry with Socratic AI
+                Co-Piloting</span
+              >
+              <h3 id="h3-lp3" style="margin: 0.35rem 0 0">
+                Lesson Plan 3 (Week 6, Lesson 6.4): Modular Neighbourhood Art
+                &amp; Socratic AI Debugging
+              </h3>
+            </div>
+            <span
+              ><strong>Duration:</strong> 50 Minutes |
+              <strong>Ages:</strong> 10–15</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <div class="grid-2">
+              <div>
+                <h4>Standards &amp; Measurable Objectives</h4>
+                <ul>
+                  <li>
+                    <strong>Standards:</strong> CSTA 2-AP-13 (Decomposition into
+                    functions), CSTA 2-AP-16 (Attribution), ISTE 1.1.c (Feedback
+                    via technology).
+                  </li>
+                  <li>
+                    <strong>Content Objective:</strong> Students will design and
+                    call at least two custom parameterized Python functions
+                    (e.g., <code>draw_star(x, y, size, color)</code>) to
+                    generate a composite scene, using a Socratic AI assistant to
+                    diagnose and resolve at least one bug while logging the
+                    interaction.
+                  </li>
+                  <li>
+                    <strong>Inquiry Question:</strong>
+                    <em
+                      >"How can we teach a computer new vocabulary words
+                      (functions) and use an AI partner to help us fix bugs
+                      without letting the AI steal our learning?"</em
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4>Materials &amp; Setup</h4>
+                <ul>
+                  <li>
+                    Material #8: Socratic AI Prompt Engineering Template ("Ask,
+                    Don't Copy")
+                  </li>
+                  <li>
+                    Material #15: Student AI Transparency &amp; Attribution Log
+                  </li>
+                  <li>
+                    Guardrailed Classroom Socratic AI Sandbox (configured with
+                    system prompt to ask guiding questions rather than
+                    outputting full code solutions)
+                  </li>
+                  <li>Python IDE with <code>turtle</code> canvas enabled</li>
+                </ul>
+              </div>
+            </div>
+
+            <h4>Instructional Sequence (50 Minutes)</h4>
+            <ol>
+              <li>
+                <strong
+                  >00–08 min | Inquiry Launch ("The 200-Line Spaghetti Code
+                  Problem"):</strong
+                >
+                <p>
+                  <em>Teacher Action:</em> Show a script that draws 5 houses
+                  using 120 lines of copy-pasted <code>turtle</code> commands.
+                  Ask: "The client just asked us to change every roof from
+                  triangles to flat solar roofs. How painful is that in this
+                  code?" Contrast with a 25-line modular script that defines
+                  <code>def draw_house(x, y, size, color):</code> once and calls
+                  it 5 times.
+                </p>
+              </li>
+              <li>
+                <strong
+                  >08–18 min | Modeling Socratic AI Debugging ("Red Prompt vs.
+                  Green Prompt"):</strong
+                >
+                <p>
+                  <em>Teacher Action:</em> Demonstrate a broken function on
+                  screen that throws
+                  <code
+                    >TypeError: draw_tree() missing 1 required positional
+                    argument: 'size'</code
+                  >. Show two ways to interact with the AI assistant:
+                </p>
+                <ul>
+                  <li>
+                    <strong
+                      >Red Prompt (Cognitive Offloading — Not Allowed):</strong
+                    >
+                    <em>"Fix my code and write a forest scene for me."</em>
+                    (Result: Student learns nothing and cannot modify the code
+                    later).
+                  </li>
+                  <li>
+                    <strong
+                      >Green Prompt (Socratic Co-Piloting — Expected):</strong
+                    >
+                    <em
+                      >"I am a 7th-grade Python coder. My function on line 12
+                      gives `TypeError: draw_tree() missing 1 required
+                      positional argument: 'size'`. Please explain what this
+                      error means in simple terms and ask me a question to help
+                      me spot what I forgot on line 20. Do not rewrite my
+                      code."</em
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>18–40 min | Project-Based Inquiry Studio:</strong>
+                <p>
+                  Students design a modular scene (e.g., a night sky
+                  constellation map, an underwater coral reef, a futuristic
+                  sustainable city, or an accessible text-based ASCII dashboard
+                  for non-visual learners). Requirements:
+                </p>
+                <ol>
+                  <li>
+                    Define at least two custom functions using
+                    <code>def</code> with at least 2 parameters each (e.g.,
+                    size, color, or coordinates).
+                  </li>
+                  <li>
+                    Call each function at least 3 times with different arguments
+                    (or inside a loop) to create variety.
+                  </li>
+                  <li>
+                    Use the Socratic AI assistant at least once to either (a)
+                    debug an error, (b) brainstorm how to calculate polygon
+                    exterior angles, or (c) ask for feedback on variable naming,
+                    and record the exchange on Material #15.
+                  </li>
+                </ol>
+                <pre
+                  tabindex="0"
+                ><code># Lesson 6.4 Example Modular Inquiry Artifact (with Audio/Console Telemetry for Accessibility)
+import turtle
+
+screen = turtle.Screen()
+screen.bgcolor("midnightblue")
+pen = turtle.Turtle()
+pen.speed(0)
+
+def draw_star(x, y, size, star_color):
+    """Draws a 5-pointed star at (x, y) and logs telemetry to the console for screen readers."""
+    print(f"[Canvas Telemetry] Drawing {star_color} star of size {size} at coordinates ({x}, {y}).")
+    pen.penup()
+    pen.goto(x, y)
+    pen.pendown()
+    pen.color(star_color)
+    pen.begin_fill()
+    for _ in range(5):
+        pen.forward(size)
+        pen.right(144)
+    pen.end_fill()
+
+# Calling our custom function with different arguments!
+draw_star(-120, 80, 40, "gold")
+draw_star(0, 120, 25, "lightcyan")
+draw_star(100, 60, 55, "orange")
+
+pen.hideturtle()</code></pre>
+              </li>
+              <li>
+                <strong
+                  >40–50 min | Attribution Audit &amp; Gallery Debrief:</strong
+                >
+                <p>
+                  Students complete their AI Citation Slip (Material #15) at the
+                  bottom of their code file as a docstring comment. Three
+                  volunteers share a bug they solved using a Socratic prompt and
+                  explain <em>why</em> the AI's hint worked.
+                </p>
+              </li>
+            </ol>
+
+            <div class="callout callout-success">
+              <h4>Differentiation, Scaffolding &amp; Accessibility Notes</h4>
+              <ul>
+                <li>
+                  <strong
+                    >Non-Visual / Blind &amp; Low-Vision Adaptation:</strong
+                  >
+                  Notice line 11 in the code block above: every graphical
+                  function includes a mandatory
+                  <code>print(f"[Canvas Telemetry] ...")</code> statement so
+                  screen-reader users receive complete semantic confirmation of
+                  coordinates, colors, and shapes generated on the canvas.
+                </li>
+                <li>
+                  <strong>High-Ceiling Extension:</strong> Challenge advanced
+                  students to combine functions with the
+                  <code>random</code> library inside a <code>for</code> loop to
+                  generate 30 randomized stars across the sky with a single
+                  loop.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 4: MATERIALS PORTFOLIO (16 COMPLETE ITEMS)
+         ====================================================================== -->
+      <section
+        id="deliverable-4"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-4"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 4</span>
+          <h2 id="h2-deliv-4">
+            Complete Classroom Materials Portfolio (16 Ready-to-Use Items)
+          </h2>
+          <p>
+            A comprehensive collection of 16 worksheets, unplugged activities,
+            bilingual scaffolds, assessments, rubrics, and AI templates designed
+            with UDL and multi-format accessibility.
+          </p>
+        </div>
+
+        <div class="callout callout-info">
+          <h4>
+            Built-In Accessibility Architecture Across All 16 Portfolio
+            Materials
+          </h4>
+          <ul>
+            <li>
+              <strong>Large-Print &amp; Dyslexia-Ready:</strong> Clicking the
+              <em>Large Print (125%)</em> or
+              <em>Dyslexia-Friendly Spacing</em> buttons in the top toolbar
+              dynamically reformats all 16 materials below for immediate
+              printing or student device reading.
+            </li>
+            <li>
+              <strong>Screen-Reader Semantic Markup:</strong> All rubrics,
+              quizzes, and checklists use native HTML tables with explicit
+              <code>&lt;th scope="col"&gt;</code> and
+              <code>&lt;th scope="row"&gt;</code> associations, avoiding
+              visual-only layouts.
+            </li>
+            <li>
+              <strong>Alternate &amp; Tactile Formats:</strong> Visual exercises
+              (like Flowcharts, Parson's Problems, and Turtle Grids) include
+              explicit tactile/audio descriptions and non-visual console
+              equivalents.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ITEM 1 -->
+        <article class="portfolio-item" aria-labelledby="mat-1">
+          <div class="portfolio-item-header">
+            <h3 id="mat-1" style="margin: 0">
+              Item 1: Pre-Course Computational Thinking &amp; Dispositions
+              Diagnostic Survey
+            </h3>
+            <span class="tag">Diagnostic Assessment | Week 1</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong
+                >Instructions for Students (Read Aloud / Screen-Reader
+                Friendly):</strong
+              >
+              This is not a graded test! Your answers help your teacher design
+              projects around your interests and learning preferences. You may
+              answer by circling choices, typing, or recording a voice memo.
+            </p>
+            <ol>
+              <li>
+                <strong>Experience Check:</strong> Which of these have you tried
+                before? (Check all that apply):<br />
+                [ ] Scratch / Block Coding &nbsp; [ ] Minecraft Redstone /
+                Roblox &nbsp; [ ] Python / JavaScript &nbsp; [ ] Cooking from a
+                recipe or building LEGO sets &nbsp; [ ] Brand new to coding!
+              </li>
+              <li>
+                <strong
+                  >Self-Efficacy Rating (1 = Strongly Disagree to 5 = Strongly
+                  Agree):</strong
+                >
+                <ul>
+                  <li>
+                    a) "When a puzzle or game is frustrating, I like trying
+                    different strategies until I figure it out." [ 1 | 2 | 3 | 4
+                    | 5 ]
+                  </li>
+                  <li>
+                    b) "I can see myself building a computer program that helps
+                    my friends or community." [ 1 | 2 | 3 | 4 | 5 ]
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Logic Puzzle (Sequence &amp; Conditionals):</strong> A
+                robot is facing North on square (0,0). It follows these
+                instructions:
+                <code
+                  >Move Forward 2 steps. IF the square is Blue, Turn Right; ELSE
+                  Turn Left. Move Forward 1 step.</code
+                >
+                Square (0,2) is Red. Where does the robot end up, and which way
+                is it facing?<br />
+                <em>Student Answer Space:</em>
+                _________________________________________________________________
+              </li>
+              <li>
+                <strong>Access &amp; Learning Profile:</strong> How do you learn
+                best? (Check any that help you):<br />
+                [ ] Larger font text &nbsp; [ ] Watching a quick video demo
+                first &nbsp; [ ] Working with a partner &nbsp; [ ] Quiet
+                headphones time &nbsp; [ ] Reading instructions in another
+                language (Which language? ____________)
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ITEM 2 -->
+        <article class="portfolio-item" aria-labelledby="mat-2">
+          <div class="portfolio-item-header">
+            <h3 id="mat-2" style="margin: 0">
+              Item 2: Unplugged Activity Guide — "The Robo-Chef Sandwich
+              Algorithm"
+            </h3>
+            <span class="tag">Unplugged Kinesthetic Activity | Week 1</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Objective:</strong> Discover why computers require
+              unambiguous, sequential instructions (CSTA 2-AP-10) and experience
+              debugging in a zero-screen environment.
+            </p>
+            <p>
+              <strong>Materials (Tactile &amp; Allergy-Safe):</strong> Foam or
+              cardboard cutouts representing: 2 slices of bread, 1 jar of
+              sunflower butter (cardboard cylinder with lid), 1 plastic
+              spreader, 1 plate. (Each foam piece has raised Braille/textured
+              tape labels on the corner for blind/low-vision learners).
+            </p>
+            <p>
+              <strong
+                >Allowed Command Vocabulary (Students may ONLY use these 6
+                verbs):</strong
+              >
+              <code>PICK_UP(item)</code>, <code>PUT_DOWN(item)</code>,
+              <code>TWIST_OPEN(item)</code>, <code>SCOOP_FROM(item)</code>,
+              <code>SPREAD_ON(item)</code>,
+              <code>PLACE_ON_TOP(item_a, item_b)</code>.
+            </p>
+            <p>
+              <strong>Student Worksheet Prompt:</strong> Write a 6-to-10 step
+              algorithm to assemble a sandwich. Then, trade papers with another
+              team who will act as the literal "Robo-Chef." Record below what
+              "Bug" happened on your first run and how you fixed your code on
+              Version 2.0!
+            </p>
+            <ul>
+              <li>
+                <strong>Bug Observed in Version 1.0:</strong> (e.g.,
+                <em
+                  >"We forgot to write TWIST_OPEN(jar), so the Robo-Chef smashed
+                  the spreader onto the closed lid!"</em
+                >)
+              </li>
+              <li>
+                <strong>Refactored Fix in Version 2.0:</strong>
+                ___________________________________________________________
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ITEM 3 -->
+        <article class="portfolio-item" aria-labelledby="mat-3">
+          <div class="portfolio-item-header">
+            <h3 id="mat-3" style="margin: 0">
+              Item 3: Multilingual Visual Syntax Glossary &amp; Cognate Anchor
+              Chart
+            </h3>
+            <span class="tag">MLL / UDL Reference Resource | Weeks 1–8</span>
+          </div>
+          <div class="portfolio-item-body">
+            <div
+              class="table-responsive"
+              tabindex="0"
+              role="region"
+              aria-labelledby="caption-glossary"
+            >
+              <table>
+                <caption id="caption-glossary">
+                  Table 4.1: Core Python Keywords with Plain-English Meaning,
+                  Spanish &amp; Arabic Scaffolds, and Concrete Metaphors
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Python Syntax</th>
+                    <th scope="col">Plain-English Meaning</th>
+                    <th scope="col">Spanish (Espa&ntilde;ol)</th>
+                    <th scope="col">Arabic (العربية)</th>
+                    <th scope="col">Concrete Metaphor / Audio Cue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>print("Hello")</code></td>
+                    <td>Display text on the screen/console</td>
+                    <td><em>Imprimir / Mostrar en pantalla</em></td>
+                    <td>اطبع / اعرض على الشاشة</td>
+                    <td>Megaphone: Speaking out loud to the user.</td>
+                  </tr>
+                  <tr>
+                    <td><code>input("Ask: ")</code></td>
+                    <td>Pause and wait for the user to type an answer</td>
+                    <td><em>Entrada / Preguntar al usuario</em></td>
+                    <td>إدخال / انتظر إجابة المستخدم</td>
+                    <td>
+                      Microphone: Listening and catching the user's words.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>score = 10</code></td>
+                    <td>
+                      Store the value 10 inside the variable box named
+                      <code>score</code>
+                    </td>
+                    <td><em>Asignar / Guardar en una caja</em></td>
+                    <td>تخزين القيمة داخل متغير</td>
+                    <td>
+                      Storage Bin: Put the right-side item into the left-side
+                      box.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>if / elif / else:</code></td>
+                    <td>
+                      If True do this / Otherwise if True / Otherwise do default
+                    </td>
+                    <td><em>Si / Sino si / Si no (Condicional)</em></td>
+                    <td>إذا / وإلا إذا / وإلا</td>
+                    <td>
+                      Fork in a Trail: Choosing one path based on a signpost.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>for i in range(5):</code></td>
+                    <td>
+                      Repeat the indented block a specific number of times (5)
+                    </td>
+                    <td><em>Para cada / Repetir 5 veces</em></td>
+                    <td>كرر لعدد محدد من المرات</td>
+                    <td>
+                      Track Laps: Running exactly 5 laps around the field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>while energy &gt; 0:</code></td>
+                    <td>Keep repeating as long as the condition stays True</td>
+                    <td><em>Mientras sea verdadero</em></td>
+                    <td>طالما الشرط صحيح استمر</td>
+                    <td>
+                      Battery Toy: Keeps moving until the battery hits zero.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>def jump(height):</code></td>
+                    <td>Define a reusable custom command (function)</td>
+                    <td><em>Definir una funci&oacute;n / receta</em></td>
+                    <td>تعريف دالة / وصفة قابلة للتكرار</td>
+                    <td>
+                      Recipe Card: Write the recipe once, cook it anytime!
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 4 -->
+        <article class="portfolio-item" aria-labelledby="mat-4">
+          <div class="portfolio-item-header">
+            <h3 id="mat-4" style="margin: 0">
+              Item 4: PRIMM Guided Worksheet — Variables,
+              <code>input()</code> &amp; Type Casting
+            </h3>
+            <span class="tag">Scaffolded Coding Worksheet | Week 2</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>The PRIMM Method:</strong> Great programmers read code
+              before they write code! Follow the 5 steps below:
+            </p>
+            <pre tabindex="0"><code># Starter Script for PRIMM Investigation
+pet_name = input("Enter your virtual pet's name: ")
+pet_age = int(input("Enter your pet's age in human years: "))
+dog_years = pet_age * 7
+print("Awesome! " + pet_name + " is " + str(dog_years) + " in dog years!")</code></pre>
+            <ol>
+              <li>
+                <strong>PREDICT (Before running!):</strong> If a user types
+                <code>Biscuit</code> and then types <code>3</code>, what exact
+                sentence will appear on line 4?
+                ____________________________________________________________________
+              </li>
+              <li>
+                <strong>RUN:</strong> Type or open the script and run it with
+                <code>Biscuit</code> and <code>3</code>. Did the output match
+                your prediction? [ Yes / No ]
+              </li>
+              <li>
+                <strong>INVESTIGATE:</strong>
+                <ul>
+                  <li>
+                    a) Why did the author wrap <code>input()</code> inside
+                    <code>int(...)</code> on line 2? What happens if you delete
+                    <code>int(</code> and the closing <code>)</code>? (Hint:
+                    What is <code>"3" * 7</code> in Python? It prints
+                    <code>"3333333"</code>!)
+                  </li>
+                  <li>
+                    b) Why is <code>str(dog_years)</code> needed on line 4?
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>MODIFY:</strong> Add a 5th line that asks for the pet's
+                favorite treat and prints a feeding message.
+              </li>
+              <li>
+                <strong>MAKE:</strong> Write a brand-new 5-line program that
+                asks a user how many minutes they read per day and calculates
+                how many hours they will read in a 30-day month.
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ITEM 5 -->
+        <article class="portfolio-item" aria-labelledby="mat-5">
+          <div class="portfolio-item-header">
+            <h3 id="mat-5" style="margin: 0">
+              Item 5: Accessible Parson's Problem Set — Python Conditionals
+            </h3>
+            <span class="tag"
+              >Formative Puzzle (Zero-Typing Load) | Week 4</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Instructions:</strong> The 7 lines of code below are
+              scrambled! Number them from <code>1</code> to <code>7</code> in
+              the correct logical order AND write how many Indentation Levels
+              (0, 1, or 2 tabs of 4 spaces) each line needs so the program
+              checks weather temperatures properly.
+              <em
+                >(Note: One line is a "Distractor Bug" that should NOT be
+                used!)</em
+              >
+            </p>
+            <ul>
+              <li>
+                [ Order: ___ | Indent: ___ ]
+                <code>elif temp_c &gt;= 15 and temp_c &lt;= 28:</code>
+              </li>
+              <li>
+                [ Order: ___ | Indent: ___ ]
+                <code
+                  >temp_c = int(input("What is the outside temperature in
+                  Celsius? "))</code
+                >
+              </li>
+              <li>
+                [ Order: ___ | Indent: ___ ]
+                <code
+                  >print("Perfect weather! Grab a light jacket and go
+                  outside.")</code
+                >
+              </li>
+              <li>
+                [ Order: ___ | Indent: ___ ] <code>if temp_c &gt; 28:</code>
+              </li>
+              <li>[ Order: ___ | Indent: ___ ] <code>else:</code></li>
+              <li>
+                [ Order: ___ | Indent: ___ ]
+                <code
+                  >print("It's hot! Drink plenty of water and seek
+                  shade.")</code
+                >
+              </li>
+              <li>
+                [ Order: ___ | Indent: ___ ]
+                <code>print("Brrr! Bundle up with a warm coat.")</code>
+              </li>
+              <li>
+                [ DISTRACTOR — DO NOT USE ]
+                <code
+                  >elif temp_c = 15: # Bug: single = instead of == or
+                  &gt;=</code
+                >
+              </li>
+            </ul>
+            <p>
+              <em>Answer Key for Teacher / Self-Check:</em> Line 1:
+              <code>temp_c = ...</code> (Indent 0) &rarr; Line 2:
+              <code>if temp_c &gt; 28:</code> (Indent 0) &rarr; Line 3:
+              <code>print("It's hot!...")</code> (Indent 1) &rarr; Line 4:
+              <code>elif temp_c &gt;= 15...</code> (Indent 0) &rarr; Line 5:
+              <code>print("Perfect...")</code> (Indent 1) &rarr; Line 6:
+              <code>else:</code> (Indent 0) &rarr; Line 7:
+              <code>print("Brrr!...")</code> (Indent 1).
+            </p>
+          </div>
+        </article>
+
+        <!-- ITEM 6 -->
+        <article class="portfolio-item" aria-labelledby="mat-6">
+          <div class="portfolio-item-header">
+            <h3 id="mat-6" style="margin: 0">
+              Item 6: Pair Programming Driver &amp; Navigator Role Cards +
+              Sentence Stems
+            </h3>
+            <span class="tag">Collaborative Desk Mat | Weeks 2–8</span>
+          </div>
+          <div class="portfolio-item-body">
+            <div class="grid-2">
+              <div class="card">
+                <h4>Role 1: THE DRIVER (Hands on Keyboard)</h4>
+                <ul>
+                  <li>
+                    <strong>Your Job:</strong> Control the keyboard/mouse and
+                    type the code out loud as you go.
+                  </li>
+                  <li>
+                    <strong>Golden Rule:</strong> Never type ahead silently
+                    without explaining your plan to your Navigator!
+                  </li>
+                  <li>
+                    <strong>Helpful Sentence Stems:</strong>
+                    <ul>
+                      <li>
+                        <em
+                          >"I am thinking of creating a variable called ___ on
+                          line 3. Does that name make sense?"</em
+                        >
+                      </li>
+                      <li>
+                        <em
+                          >"Hold on, let me pause typing so we can read this
+                          error message together."</em
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="card">
+                <h4>Role 2: THE NAVIGATOR (Eyes on the Map)</h4>
+                <ul>
+                  <li>
+                    <strong>Your Job:</strong> Watch for missing colons
+                    (<code>:</code>), unmatched parentheses, spelling, and test
+                    ideas.
+                  </li>
+                  <li>
+                    <strong>Golden Rule:</strong> Never grab the keyboard or
+                    mouse from the Driver! Point with a pencil or refer to line
+                    numbers.
+                  </li>
+                  <li>
+                    <strong>Helpful Sentence Stems:</strong>
+                    <ul>
+                      <li>
+                        <em
+                          >"Check line 8—I think our <code>if</code> statement
+                          needs a colon at the end."</em
+                        >
+                      </li>
+                      <li>
+                        <em
+                          >"What if the user types a negative number? Let's test
+                          that!"</em
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 7 -->
+        <article class="portfolio-item" aria-labelledby="mat-7">
+          <div class="portfolio-item-header">
+            <h3 id="mat-7" style="margin: 0">
+              Item 7: "Bug Hunter's Field Guide" — 5-Step Debugging Checklist
+              &amp; Error Translator
+            </h3>
+            <span class="tag">Metacognitive Debugging Aid | Weeks 2–8</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong
+                >Before Raising Your Hand or Asking the AI, Complete the 5-Step
+                Bug Hunt:</strong
+              >
+            </p>
+            <ol>
+              <li>
+                [ ] <strong>Read the Bottom Line First:</strong> Look at the
+                very last line of the red traceback message. What error family
+                is it?
+              </li>
+              <li>
+                [ ]
+                <strong
+                  >Check the Line Number (and the Line Right Above It!):</strong
+                >
+                Missing closing parentheses <code>)</code> or quotes
+                <code>"</code> on Line 4 often make Python complain on Line 5!
+              </li>
+              <li>
+                [ ] <strong>Check Indentation &amp; Colons:</strong> Does every
+                <code>if</code>, <code>elif</code>, <code>else</code>,
+                <code>for</code>, <code>while</code>, and <code>def</code> end
+                with a colon <code>:</code>? Are the lines inside indented by 4
+                spaces?
+              </li>
+              <li>
+                [ ]
+                <strong>Add a Detective <code>print()</code> Statement:</strong>
+                Print out your variables right before the crash to see what
+                value is actually inside the box.
+              </li>
+              <li>
+                [ ] <strong>Rubber Duck Explain:</strong> Read your code out
+                loud line-by-line to a partner or a desk toy.
+              </li>
+            </ol>
+            <div
+              class="table-responsive"
+              tabindex="0"
+              role="region"
+              aria-labelledby="caption-errors"
+            >
+              <table>
+                <caption id="caption-errors">
+                  Table 4.2: Kid-Friendly Python Error Message Translator
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Python Error Name</th>
+                    <th scope="col">What Python Is Actually Saying</th>
+                    <th scope="col">Most Common Fix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>SyntaxError</code></td>
+                    <td>"I don't understand your grammar/punctuation!"</td>
+                    <td>
+                      Check for missing quotes <code>" "</code>, missing colons
+                      <code>:</code>, or unmatched <code>( )</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>NameError</code></td>
+                    <td>
+                      "You used a variable or function word I've never met
+                      before!"
+                    </td>
+                    <td>
+                      Check spelling and capitalization (<code>Score</code> vs.
+                      <code>score</code>) or define the variable first.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>TypeError</code></td>
+                    <td>
+                      "You tried to mix incompatible data types (like adding
+                      text to a number)!"
+                    </td>
+                    <td>
+                      Use <code>int()</code> or <code>str()</code> to convert
+                      data types so they match.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>IndentationError</code></td>
+                    <td>
+                      "Your code blocks aren't lined up evenly on the left
+                      margin!"
+                    </td>
+                    <td>
+                      Make sure every block inside a colon uses exactly 4 spaces
+                      (1 Tab).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>IndexError</code></td>
+                    <td>
+                      "You asked for item #5 in a list that only has 3 items!"
+                    </td>
+                    <td>
+                      Remember Python lists start counting at <code>0</code>,
+                      not <code>1</code>!
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 8 -->
+        <article class="portfolio-item" aria-labelledby="mat-8">
+          <div class="portfolio-item-header">
+            <h3 id="mat-8" style="margin: 0">
+              Item 8: Socratic AI Prompt Engineering Template ("Ask, Don't Copy"
+              Framework)
+            </h3>
+            <span class="tag"
+              >AI Literacy &amp; Prompting Scaffold | Weeks 4–8</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Golden Rule of AI Co-Piloting:</strong> Our classroom AI
+              is your <em>coach</em>, not your <em>ghostwriter</em>. If you
+              paste code into your project that you cannot explain line-by-line,
+              it does not belong in your program! Copy and fill in one of the
+              three green templates below when querying the Socratic AI sandbox:
+            </p>
+            <pre tabindex="0"><code># TEMPLATE A: THE ERROR TRANSLATOR PROMPT
+"I am a middle-school student learning Python. My goal is to [describe what your code is trying to do].
+On line [X], I ran this code:
+[paste 3-5 lines of your code]
+And I got this error message: [paste error message].
+Please explain why this error happens in simple terms and give me a hint or question so I can fix it myself. Do NOT give me the finished code."
+
+# TEMPLATE B: THE BRAINSTORM & DECOMPOSITION PROMPT
+"I want to build a Python program that [describe your game or project idea].
+I know how to use variables, if/else, loops, and functions.
+Can you help me break this project down into 4 small steps (pseudocode only, no Python code) so I know what to build first?"
+
+# TEMPLATE C: THE EDGE-CASE TESTER PROMPT
+"Here is my Python function that checks user input:
+[paste function]
+What are 3 tricky inputs a user might type that could break or confuse my function?"</code></pre>
+          </div>
+        </article>
+
+        <!-- ITEM 9 -->
+        <article class="portfolio-item" aria-labelledby="mat-9">
+          <div class="portfolio-item-header">
+            <h3 id="mat-9" style="margin: 0">
+              Item 9: Python <code>turtle</code> Coordinate Grid &amp;
+              Audio-Tactile Mapping Guide
+            </h3>
+            <span class="tag"
+              >Visual &amp; Non-Visual Geometry Resource | Week 3</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>How the Turtle Canvas Works:</strong> Unlike reading a
+              page from top-left, the Python Turtle starts at the exact center
+              of the screen: <strong>Origin <code>(0, 0)</code></strong
+              >, facing East (0 degrees).
+            </p>
+            <pre
+              tabindex="0"
+              aria-label="ASCII diagram of the four quadrants of the Python Turtle Cartesian Coordinate Grid"
+            ><code>                        +Y (North / Up: y = +200)
+                                  |
+         QUADRANT II              |              QUADRANT I
+       (-x, +y) e.g. (-100, 100)  |            (+x, +y) e.g. (100, 100)
+                                  |
+-X (West: x = -200) --------------+-------------- +X (East: x = +200)
+                            Origin (0, 0)
+                                  |
+         QUADRANT III             |              QUADRANT IV
+       (-x, -y) e.g. (-100, -100) |            (+x, -y) e.g. (100, -100)
+                                  |
+                        -Y (South / Down: y = -200)</code></pre>
+            <p>
+              <strong>Tactile &amp; Screen-Reader Adaptation Protocol:</strong>
+              Pair this sheet with embossed wiki-stix/raised-line graph paper
+              where the X and Y axes have double-ridged tape. When coding in the
+              IDE, students import the classroom helper function
+              <code>announce_position(pen)</code> which prints
+              <code
+                >"Turtle is at X=100, Y=50, Heading=90 degrees (North)"</code
+              >
+              to the screen-reader live region.
+            </p>
+            <p>
+              <strong>Quick Practice Check:</strong> Write the
+              <code>pen.goto(x, y)</code> command to move the turtle to the
+              bottom-left corner (Quadrant III): ________________________
+            </p>
+          </div>
+        </article>
+
+        <!-- ITEM 10 -->
+        <article class="portfolio-item" aria-labelledby="mat-10">
+          <div class="portfolio-item-header">
+            <h3 id="mat-10" style="margin: 0">
+              Item 10: Mid-Course Formative Quiz (Weeks 1–4) with Accommodated
+              Pathway
+            </h3>
+            <span class="tag">Summative/Formative Check | Week 4</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Universal Accommodations Note:</strong> Untimed
+              administration; students may run code mentally or draw trace
+              tables; oral response option available for Question 5.
+            </p>
+            <ol>
+              <li>
+                <strong>Variable Reassignment:</strong> What will the code below
+                print?<br />
+                <code>points = 10</code><br />
+                <code>points = points + 5</code><br />
+                <code>points = 2</code><br />
+                <code>print(points)</code><br />
+                (A) 10 &nbsp;&nbsp; (B) 15 &nbsp;&nbsp; (C) 17 &nbsp;&nbsp;
+                <strong>(D) 2</strong>
+                <em>[Correct: Line 3 overwrites the variable with 2]</em>
+              </li>
+              <li>
+                <strong>Data Types:</strong> Which of the following values is a
+                <code>float</code> in Python?<br />
+                (A) <code>"42.5"</code> &nbsp;&nbsp;
+                <strong>(B) <code>42.5</code></strong> &nbsp;&nbsp; (C)
+                <code>42</code> &nbsp;&nbsp; (D) <code>True</code>
+              </li>
+              <li>
+                <strong>Compound Conditionals:</strong> Suppose
+                <code>age = 12</code> and <code>has_permission = False</code>.
+                What does
+                <code>if age &gt;= 10 and has_permission == True:</code>
+                evaluate to?<br />
+                (A) <code>True</code> &nbsp;&nbsp;
+                <strong>(B) <code>False</code></strong>
+                <em>[Correct: Both sides of an AND must be True]</em>
+              </li>
+              <li>
+                <strong>Code Debugging (Standard Pathway):</strong> Circle and
+                fix the two errors in the snippet below:<br />
+                <code>score = int(input("Enter score: "))</code><br />
+                <code>if score = 100</code><br />
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;print("Perfect score!")</code
+                ><br />
+                <em
+                  >[Accommodated Pathway Hint: Look closely at the
+                  <code>=</code> sign and the end of line 2!]</em
+                >
+              </li>
+              <li>
+                <strong
+                  >Algorithmic Thinking (Choice of Written Code OR Drawn
+                  Flowchart):</strong
+                >
+                Design a check for a library book return machine: if a book is
+                more than 14 days overdue, print
+                <code>"Please visit the librarian desk"</code>; otherwise print
+                <code>"Thank you for returning your book!"</code>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ITEM 11 -->
+        <article class="portfolio-item" aria-labelledby="mat-11">
+          <div class="portfolio-item-header">
+            <h3 id="mat-11" style="margin: 0">
+              Item 11: Mini-Project Specification Sheet — "Interactive Story /
+              Custom Calculator"
+            </h3>
+            <span class="tag">Mini-Project Spec | Week 2 / Week 4</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Project Goal:</strong> Create an interactive Python
+              console app on a topic you care about (e.g., Sports Stat
+              Calculator, Eco-Footprint Estimator, Fantasy Quest Intro, Bakery
+              Order System).
+            </p>
+            <p>
+              <strong
+                >Must-Have Checklist (Minimum Viable Product — MVP):</strong
+              >
+            </p>
+            <ul>
+              <li>
+                [ ] Welcomes the user with a creative title banner using
+                <code>print()</code>.
+              </li>
+              <li>
+                [ ] Collects at least <strong>3 inputs</strong> from the user
+                using <code>input()</code> (at least one text string and one
+                number converted with <code>int()</code> or
+                <code>float()</code>).
+              </li>
+              <li>
+                [ ] Performs at least
+                <strong>1 mathematical calculation</strong> (e.g.,
+                <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>)
+                and stores the result in a clearly named
+                <code>snake_case</code> variable.
+              </li>
+              <li>
+                [ ] Displays a personalized summary output combining user text
+                and calculated numbers without crashing.
+              </li>
+              <li>
+                [ ] Includes at least
+                <strong>2 code comments (<code>#</code>)</strong> explaining
+                your logic and your name/date at the top.
+              </li>
+            </ul>
+            <p>
+              <strong
+                >Spicy Extensions (Optional High-Ceiling Challenges):</strong
+              >
+              Add <code>round(value, 2)</code> for currency formatting, ASCII
+              art banners, or an <code>if/else</code> bonus message based on the
+              calculated score!
+            </p>
+          </div>
+        </article>
+
+        <!-- ITEM 12 -->
+        <article class="portfolio-item" aria-labelledby="mat-12">
+          <div class="portfolio-item-header">
+            <h3 id="mat-12" style="margin: 0">
+              Item 12: Capstone Project Pitch &amp; System Decomposition
+              Blueprint
+            </h3>
+            <span class="tag">Project Planning Template | Week 7</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Instructions:</strong> Every software engineer plans
+              before coding! Complete this blueprint (via typing,
+              hand-sketching, or voice dictation) and get teacher sign-off on
+              Day 2 of Week 7.
+            </p>
+            <ol>
+              <li>
+                <strong>Project Title &amp; Pathway Choice:</strong><br />
+                [ ] Pathway A: Interactive Text Adventure / Trivia Game<br />
+                [ ] Pathway B: Generative Digital Art / Data Visualizer (with
+                Turtle + Console Telemetry)<br />
+                [ ] Pathway C: Community Helper Utility (e.g., Study Flashcard
+                App, Recycling Sorter, Budget Tracker)
+              </li>
+              <li>
+                <strong>Target User &amp; Purpose:</strong> Who is this program
+                for, and why will they enjoy or benefit from it?
+              </li>
+              <li>
+                <strong
+                  >System Decomposition (Break your big idea into 3 custom
+                  functions):</strong
+                >
+                <ul>
+                  <li>
+                    <code>def function_1_name(parameters):</code> &rarr; What
+                    job does this part do? ______________________
+                  </li>
+                  <li>
+                    <code>def function_2_name(parameters):</code> &rarr; What
+                    job does this part do? ______________________
+                  </li>
+                  <li>
+                    <code>def function_3_name(parameters):</code> &rarr; What
+                    job does this part do? ______________________
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Data &amp; Control Structures Plan:</strong>
+                <ul>
+                  <li>
+                    What <strong>List</strong> will your program use to store
+                    items? <code>my_list = [ _______________ ]</code>
+                  </li>
+                  <li>
+                    Where will your program use a <strong>Loop</strong> (<code
+                      >for</code
+                    >
+                    or <code>while</code>)? _______________________
+                  </li>
+                  <li>
+                    Where will your program use a
+                    <strong>Conditional</strong> (<code>if/elif/else</code>)?
+                    ____________________
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Scope Check (MVP vs. Dream Features):</strong>
+                <ul>
+                  <li>
+                    <em>Core MVP (Must work by Thursday):</em>
+                    __________________________________________________
+                  </li>
+                  <li>
+                    <em>Stretch Feature (If I have extra time):</em>
+                    ______________________________________________
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ITEM 13 -->
+        <article class="portfolio-item" aria-labelledby="mat-13">
+          <div class="portfolio-item-header">
+            <h3 id="mat-13" style="margin: 0">
+              Item 13: Peer Code Review &amp; Playtesting Protocol ("Two Stars,
+              A Wish, and a Test Case")
+            </h3>
+            <span class="tag"
+              >Collaborative QA Protocol | Week 7, Lesson 7.5</span
+            >
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Reviewer Name:</strong> _______________________ &nbsp;
+              <strong>Creator Name:</strong> _______________________
+            </p>
+            <ol>
+              <li>
+                <strong>Playtest 1 (Normal User Input):</strong> Run the program
+                following the on-screen instructions. Did it run from start to
+                finish without a red error? [ Yes / Almost — crashed on Line ___
+                ]
+              </li>
+              <li>
+                <strong>Playtest 2 (Boundary / Edge-Case Test):</strong> Try
+                typing an unexpected input (e.g., uppercase letters, a negative
+                number, or pressing Enter).<br />
+                <em>What I typed:</em> ___________________ &nbsp;
+                <em>How the program responded:</em> __________________________
+              </li>
+              <li>
+                <strong>Code Readability Inspection:</strong> Look inside the
+                Python file:
+                <ul>
+                  <li>
+                    [ ] Variable and function names are clear and use
+                    <code>snake_case</code>.
+                  </li>
+                  <li>
+                    [ ] Code comments (<code>#</code>) explain tricky sections.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong
+                  >Two Stars (Specific things that worked really well or were
+                  creative):</strong
+                ><br />
+                &#9733; Star 1:
+                _______________________________________________________________________________<br />
+                &#9733; Star 2:
+                _______________________________________________________________________________
+              </li>
+              <li>
+                <strong
+                  >One Wish (One specific suggestion to make the user experience
+                  or code even clearer):</strong
+                ><br />
+                &#10024; I wish / What if:
+                _____________________________________________________________________
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ITEM 14 -->
+        <article class="portfolio-item" aria-labelledby="mat-14">
+          <div class="portfolio-item-header">
+            <h3 id="mat-14" style="margin: 0">
+              Item 14: Master 4-Point Analytic Capstone Rubric (with UDL
+              Alternative Demonstration Pathways)
+            </h3>
+            <span class="tag">Summative Rubric | Week 8</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong
+                >UDL Assessment Accommodations &amp; Alternative Demonstrations
+                of Mastery:</strong
+              >
+            </p>
+            <ul>
+              <li>
+                <strong>Code Explanation Modality:</strong> To verify authentic
+                authorship and conceptual mastery (Criterion 5), students choose
+                <em>how</em> they demonstrate understanding: (a) Live 3-minute
+                showcase talk, (b) Pre-recorded screencast video with captions,
+                (c) 1-on-1 teacher conference, or (d) Written/annotated "Code
+                Tour" document.
+              </li>
+              <li>
+                <strong>Syntax vs. Logic Weighting:</strong> Students with
+                documented dysgraphia or motor accommodations who construct
+                their capstone using bimodal Python blocks (EduBlocks) are
+                graded on the exact same computational criteria without penalty.
+              </li>
+            </ul>
+            <div
+              class="table-responsive"
+              tabindex="0"
+              role="region"
+              aria-labelledby="caption-rubric"
+            >
+              <table>
+                <caption id="caption-rubric">
+                  Table 4.3: Analytic Capstone Evaluation Rubric Aligned to CSTA
+                  &amp; ISTE Standards
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Criterion &amp; Standard</th>
+                    <th scope="col">4 — Innovating (Exceeds)</th>
+                    <th scope="col">3 — Proficient (Meets Target)</th>
+                    <th scope="col">2 — Developing (Approaching)</th>
+                    <th scope="col">1 — Emerging (Needs Support)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      1. Decomposition &amp; Planning<br />(CSTA 2-AP-10,
+                      2-AP-13)
+                    </th>
+                    <td>
+                      Blueprint decomposes problem into cohesive modules with
+                      clear flowcharts; code structure matches and refines the
+                      plan seamlessly.
+                    </td>
+                    <td>
+                      Blueprint is complete and breaks the program into at least
+                      2–3 logical custom functions with clear
+                      pseudocode/flowchart steps.
+                    </td>
+                    <td>
+                      Blueprint is partially complete; program relies mostly on
+                      top-to-bottom linear code with minimal decomposition.
+                    </td>
+                    <td>
+                      Blueprint is missing or incomplete; program is written
+                      without discernible planning structure.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      2. Data Types, Variables &amp; Lists<br />(CSTA 2-AP-11)
+                    </th>
+                    <td>
+                      Uses descriptive <code>snake_case</code> variables,
+                      multiple data types, and dynamically updates/iterates
+                      through a Python list during runtime.
+                    </td>
+                    <td>
+                      Correctly declares and manipulates at least 3 data types
+                      and 1 list using clear, meaningful variable names without
+                      <code>TypeError</code> crashes.
+                    </td>
+                    <td>
+                      Uses variables and at least 2 data types, but some names
+                      are vague (e.g., <code>x, a, b</code>) or list usage is
+                      static/incomplete.
+                    </td>
+                    <td>
+                      Variables are hardcoded or improperly typed, preventing
+                      the program from storing or updating user state.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      3. Control Structures (Conditionals &amp; Loops)<br />(CSTA
+                      2-AP-12)
+                    </th>
+                    <td>
+                      Seamlessly combines nested or compound conditionals
+                      (<code>and/or</code>) with <code>for</code>/<code
+                        >while</code
+                      >
+                      loops to create responsive, replayable program flow.
+                    </td>
+                    <td>
+                      Accurately implements branching conditionals
+                      (<code>if/elif/else</code>) and at least one working loop
+                      (<code>for</code> or <code>while</code>) with no
+                      infinite-loop bugs.
+                    </td>
+                    <td>
+                      Includes conditionals or a loop, but logic contains
+                      unreachable branches or minor indentation/termination
+                      flaws.
+                    </td>
+                    <td>
+                      Control structures are missing or contain syntax errors
+                      that prevent execution.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      4. Modular Functions, Testing &amp; Debugging<br />(CSTA
+                      2-AP-13, 2-AP-17)
+                    </th>
+                    <td>
+                      Defines custom functions with parameters/return values AND
+                      includes defensive input normalization (e.g.,
+                      <code>.lower().strip()</code>) that handles edge cases
+                      gracefully.
+                    </td>
+                    <td>
+                      Defines and calls at least 2 custom functions; program
+                      runs from start to finish on standard test cases without
+                      crashing.
+                    </td>
+                    <td>
+                      Defines 1 function or functions lack parameters; program
+                      runs on ideal inputs but crashes on common boundary cases.
+                    </td>
+                    <td>
+                      No custom functions defined; program fails to run due to
+                      unresolved syntax or runtime errors.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      5. Ethical AI Attribution &amp; Code Explanation<br />(CSTA
+                      2-AP-16, ISTE 1.1.c)
+                    </th>
+                    <td>
+                      AI Attribution Log is thorough and reflective; student
+                      explains every function and control flow choice with deep
+                      conceptual clarity via chosen modality.
+                    </td>
+                    <td>
+                      AI Attribution Log is 100% complete; student accurately
+                      explains how their code works and how they resolved bugs
+                      using their chosen modality.
+                    </td>
+                    <td>
+                      Attribution Log is partially complete; student can explain
+                      general program behavior but struggles to explain specific
+                      lines of code.
+                    </td>
+                    <td>
+                      Attribution Log is missing or student cannot explain the
+                      code submitted.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 15 -->
+        <article class="portfolio-item" aria-labelledby="mat-15">
+          <div class="portfolio-item-header">
+            <h3 id="mat-15" style="margin: 0">
+              Item 15: Student AI Transparency &amp; Attribution Log ("My AI
+              Co-Pilot Citation Slip")
+            </h3>
+            <span class="tag">Ethical AI Compliance Template | Weeks 4–8</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Instructions:</strong> Paste this docstring block at the
+              bottom of every Mini-Project and Capstone Python file. Check the
+              box that applies and document any AI or peer assistance
+              transparently (CSTA 2-AP-16).
+            </p>
+            <pre tabindex="0"><code>"""
+====================================================================
+AI & COLLABORATION ATTRIBUTION LOG (CSTA 2-AP-16)
+Student Author: [Your First Name & Last Initial]
+Project Title:  [Title of Program]
+====================================================================
+[ ] OPTION 1: I wrote 100% of this code using only class notes and the syntax glossary.
+[ ] OPTION 2: I collaborated with a classmate or the Socratic AI Coach as documented below:
+
+Interaction #1:
+- Who helped me? [Socratic AI Coach / Partner Name]
+- What line numbers or bug did I ask about? [e.g., Line 18 while loop]
+- Summary of prompt I asked: [e.g., "Why does my while loop never stop even when lives hits 0?"]
+- What I learned & changed in my own words: [e.g., "I forgot to subtract 1 from lives inside the loop!"]
+
+Verification Statement: I can explain every line of code in this file in my own words.
+====================================================================
+"""</code></pre>
+          </div>
+        </article>
+
+        <!-- ITEM 16 -->
+        <article class="portfolio-item" aria-labelledby="mat-16">
+          <div class="portfolio-item-header">
+            <h3 id="mat-16" style="margin: 0">
+              Item 16: End-of-Course Self-Assessment &amp; Metacognitive Growth
+              Reflection Journal
+            </h3>
+            <span class="tag">Summative Reflection | Week 8, Lesson 8.5</span>
+          </div>
+          <div class="portfolio-item-body">
+            <p>
+              <strong>Instructions:</strong> Respond to the 4 prompts below in
+              writing, comic strip format, or a 2-minute audio/video recording:
+            </p>
+            <ol>
+              <li>
+                <strong>Then vs. Now:</strong> Look back at your Week 1
+                Diagnostic Survey and your first <code>print()</code> script.
+                What is one concept in Python (variables, conditionals, loops,
+                functions, or lists) that used to feel confusing but now feels
+                natural?
+              </li>
+              <li>
+                <strong>My Favorite Bug:</strong> Describe the hardest bug you
+                encountered during this 8-week course. How did you feel when it
+                happened, and what debugging strategy helped you conquer it?
+              </li>
+              <li>
+                <strong>Evaluating AI:</strong> Based on your experience with
+                our Socratic AI assistant, what is one thing AI is
+                <em>helpful</em> at doing for programmers, and one reason why
+                human programmers are still essential?
+              </li>
+              <li>
+                <strong>Next Steps:</strong> If you had 2 more weeks to keep
+                building your Capstone project, what feature would you add next?
+              </li>
+            </ol>
+          </div>
+        </article>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 5: AI INTEGRATION REPORT
+         ====================================================================== -->
+      <section
+        id="deliverable-5"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-5"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 5</span>
+          <h2 id="h2-deliv-5">Comprehensive AI Integration Report</h2>
+          <p>
+            Pedagogical justification, tool ecosystem, learning outcome
+            enhancements, and strict ethical/privacy governance for learners
+            aged 10–15.
+          </p>
+        </div>
+
+        <h3 id="h3-ai-tools">1. AI Tools Used, Where, and Why</h3>
+        <p>
+          In middle-grade computer science education, unrestricted
+          code-generation tools (such as standard GitHub Copilot autocomplete or
+          unprompted ChatGPT) pose a severe risk of
+          <strong>cognitive offloading</strong>—solving the syntax puzzle before
+          the learner builds mental models of control flow. Conversely,
+          completely ignoring AI fails to prepare adolescents for modern
+          software engineering. Therefore, this course deploys a
+          <strong>tiered, pedagogically walled AI ecosystem</strong>:
+        </p>
+
+        <div
+          class="table-responsive"
+          tabindex="0"
+          role="region"
+          aria-labelledby="caption-ai-tools"
+        >
+          <table>
+            <caption id="caption-ai-tools">
+              Table 5.1: AI Tool Selection, Classroom Placement, and Pedagogical
+              Purpose
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">AI Tool / Environment</th>
+                <th scope="col">User &amp; Weeks Used</th>
+                <th scope="col">Technical Configuration</th>
+                <th scope="col">Why It Is Used (Pedagogical Rationale)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>1. Guardrailed Socratic Coding Tutor</strong
+                  ><br />(e.g., Khanmigo for Classrooms, MagicSchool Student
+                  Room, or Custom Local System-Prompted LLM Sandbox)
+                </td>
+                <td>
+                  <strong>Students</strong><br />Weeks 4–8 (Introduced after
+                  foundational syntax is established in Weeks 1–3)
+                </td>
+                <td>
+                  Configured with a locked system prompt:
+                  <em
+                    >"Never write more than 1 line of Python code. Translate
+                    compiler errors into 6th-grade reading level and ask
+                    Socratic guiding questions."</em
+                  >
+                </td>
+                <td>
+                  Provides immediate, 1-on-1 formative feedback when a student
+                  hits a cryptic Python traceback, preventing a single teacher
+                  from becoming a 25-student debugging bottleneck.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong
+                    >2. Google Teachable Machine / Token Predictor Demo</strong
+                  ><br />(Browser-Based, Local Execution)
+                </td>
+                <td>
+                  <strong>Students &amp; Teacher</strong><br />Week 1 (L1.4)
+                  &amp; Week 6 (L6.5)
+                </td>
+                <td>
+                  Zero-login, client-side browser sandboxes demonstrating
+                  training sets, confidence percentages, and biased datasets.
+                </td>
+                <td>
+                  Demystifies AI (AI4K12 Big Idea 3): students see firsthand
+                  that AI is probabilistic pattern-matching over human-selected
+                  data, not magic or sentient reasoning.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>3. Educator Differentiation Co-Pilot</strong
+                  ><br />(Teacher-Facing Only: Eduaide.ai / Claude / Gemini)
+                </td>
+                <td>
+                  <strong>Teacher Only</strong><br />Pre-Lesson Prep (Weeks 1–8)
+                </td>
+                <td>
+                  Used exclusively by the instructor with zero student PII to
+                  generate custom Parson's problems and thematic starter code.
+                </td>
+                <td>
+                  Enables rapid creation of culturally responsive starter
+                  templates (e.g., generating a cricket trivia template vs. a
+                  K-pop list template) tailored to student interests.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="h3-ai-outcomes">2. How AI Enhances Learning Outcomes</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Scaffolding the Zone of Proximal Development (ZPD)</h4>
+            <p>
+              Novice coders aged 10–15 frequently abandon programming tasks not
+              because they lack algorithmic logic, but because Python's standard
+              error messages (e.g.,
+              <code>TypeError: can only concatenate str (not "int") to str</code
+              >) are written for professional engineers. By using Material #8
+              (the Socratic Prompt Template), students receive just-in-time
+              translation of error messages at their exact reading level,
+              keeping them in Vygotsky's Zone of Proximal Development and
+              increasing active coding time during studio blocks.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Strengthening Metacognition &amp; Prompt Literacy</h4>
+            <p>
+              To ask a productive question using the classroom's "Ask, Don't
+              Copy" framework, a student must first articulate: (1) what they
+              <em>intended</em> their code to do, (2) what the code
+              <em>actually</em> did, and (3) which lines are suspect. This
+              structured externalization strengthens metacognitive
+              self-regulation (ISTE 1.1.c) and often triggers the "rubber duck
+              effect," where students spot their own bug while composing the
+              prompt.
+            </p>
+          </div>
+          <div class="card">
+            <h4>
+              Lowering Linguistic Barriers for MLL &amp; Neurodivergent Learners
+            </h4>
+            <p>
+              Multilingual learners can ask the Socratic tutor to explain a
+              Python concept (such as the difference between a
+              <code>for</code> loop and a <code>while</code> loop) using
+              analogies in their home language alongside English Python
+              keywords. Dyslexic learners can use text-to-speech and
+              speech-to-text interfaces with the Socratic tutor to verbalize
+              logic before worrying about spelling.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Adversarial QA &amp; Critical Verification</h4>
+            <p>
+              In Lesson 6.5, students intentionally examine buggy or inefficient
+              AI-generated code snippets ("Hallucination Hunts"). By acting as
+              the "senior engineer" who critiques and corrects the AI, students
+              build high-order evaluation skills (Bloom's Level 5) and shed
+              passive trust in automated systems.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="h3-ai-ethics">
+          3. Ethical, Privacy, and Legal Considerations (Ages 10–15)
+        </h3>
+        <div class="callout callout-warning">
+          <h4>
+            Strict Statutory &amp; Ethical Guardrails (COPPA, FERPA &amp; GDPR-K
+            Compliance)
+          </h4>
+          <p>
+            Because the 10–15 age band straddles the critical legal threshold of
+            age 13 under the U.S.
+            <strong>Children's Online Privacy Protection Act (COPPA)</strong>
+            and international equivalents, the following non-negotiable
+            protocols govern all AI use in this course:
+          </p>
+          <ol>
+            <li>
+              <strong>Zero Student Account Creation on Consumer LLMs:</strong>
+              Students never create personal accounts or enter email addresses,
+              birthdates, or phone numbers on public consumer AI platforms. All
+              student interaction occurs through district-vetted,
+              COPPA/FERPA-compliant classroom sandboxes joined via anonymous
+              teacher-generated room codes (where student data is contractually
+              prohibited from training foundation models).
+            </li>
+            <li>
+              <strong>The "Zero-PII in Prompts" Rule:</strong> Taught explicitly
+              in Week 1 and Week 6: students never type their real full names,
+              school names, friend names, or personal stories into prompts or
+              variable test cases shared with an AI.
+            </li>
+            <li>
+              <strong>Teacher Real-Time Transcript Visibility:</strong> The
+              classroom Socratic sandbox provides the instructor with a
+              real-time dashboard of all student prompts and AI responses, with
+              automated keyword flagging for off-task or inappropriate queries.
+            </li>
+            <li>
+              <strong
+                >Academic Integrity Through Process &amp; Attribution:</strong
+              >
+              Rather than relying on unreliable AI-detectors, academic integrity
+              is built structurally: (a) AI is introduced only in Week 4 after
+              students master core syntax unplugged and via PRIMM; (b) every
+              project requires the <em>AI Attribution Log</em> (Material #15);
+              and (c) 20% of the Capstone grade (Material #14, Criterion 5) is
+              an oral, video, or annotated walkthrough where the student
+              explains their code's execution flow.
+            </li>
+            <li>
+              <strong>Algorithmic Bias &amp; Environmental Awareness:</strong>
+              In Week 6 and Week 8, students discuss how training data biases
+              can cause AI to generate stereotyped character names or stories,
+              and why running a simple Python math operation locally uses orders
+              of magnitude less energy/water than asking a massive cloud LLM to
+              calculate <code>24 * 7</code>.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 6: IMPLEMENTATION PLAN
+         ====================================================================== -->
+      <section
+        id="deliverable-6"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-6"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 6</span>
+          <h2 id="h2-deliv-6">Classroom Implementation Plan</h2>
+          <p>
+            Operational timeline, milestones, hardware/software resource
+            requirements, teacher professional development syllabus, and
+            proactive risk mitigation matrix.
+          </p>
+        </div>
+
+        <h3 id="h3-timeline">1. Implementation Timeline &amp; Milestones</h3>
+        <div
+          class="table-responsive"
+          tabindex="0"
+          role="region"
+          aria-labelledby="caption-timeline"
+        >
+          <table>
+            <caption id="caption-timeline">
+              Table 6.1: Phased Rollout Schedule from Pre-Launch to Post-Course
+              Audit
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Phase &amp; Timeframe</th>
+                <th scope="col">Key Operational Activities</th>
+                <th scope="col">Concrete Milestone / Deliverable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Phase 1: Infrastructure &amp; Compliance</strong
+                  ><br />(Weeks -8 to -5 Pre-Launch)
+                </td>
+                <td>
+                  IT network whitelisting of browser-based Python IDE and
+                  Socratic AI sandbox; DPIA (Data Privacy Impact Assessment)
+                  approval; assistive tech check (screen readers, high-contrast
+                  displays).
+                </td>
+                <td>
+                  Signed IT &amp; Privacy Clearance; Family Opt-In / AI
+                  Transparency Welcome Letter distributed in home languages.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Phase 2: Teacher PD &amp; Materials Prep</strong
+                  ><br />(Weeks -4 to -1 Pre-Launch)
+                </td>
+                <td>
+                  Completion of 20-hour Teacher PD workshop; printing of tactile
+                  unplugged kits (Material #2, #5, #6, #9); pre-loading starter
+                  repositories for Weeks 1–8.
+                </td>
+                <td>
+                  Classroom "Ready-to-Launch" Audit passed; all 16 portfolio
+                  materials organized in LMS and physical binders.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Phase 3: Foundation &amp; Syntax Launch</strong
+                  ><br />(Course Weeks 1–4)
+                </td>
+                <td>
+                  Diagnostic baseline (Mat. #1); execution of Unplugged,
+                  Variables, Turtle Graphics, and Conditionals modules;
+                  Mid-Course Check (Mat. #10).
+                </td>
+                <td>
+                  100% of students complete Mini-Projects 1 &amp; 2; mid-course
+                  instructional pacing adjustment meeting.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Phase 4: Loops, Modularity &amp; Capstone</strong
+                  ><br />(Course Weeks 5–8)
+                </td>
+                <td>
+                  Introduction of Socratic AI Co-Pilot (Week 6); Capstone Design
+                  Sprint (Week 7); Peer QA &amp; Community Showcase Event (Week
+                  8).
+                </td>
+                <td>
+                  Capstone Showcase Event hosted; Master Rubric evaluations
+                  &amp; AI Attribution Logs archived.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Phase 5: Post-Course Curriculum Audit</strong
+                  ><br />(Weeks +1 to +2 Post-Course)
+                </td>
+                <td>
+                  Analysis of pre/post student self-efficacy growth (Mat. #1 vs.
+                  #16), rubric scores, and Socratic AI prompt logs to refine
+                  next cohort iteration.
+                </td>
+                <td>
+                  End-of-Term Instructional Impact Report submitted to school
+                  leadership.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="h3-resources">
+          2. Resource Needs (Hardware, Software, Physical &amp; Assistive)
+        </h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Hardware &amp; Software Stack (Zero-Budget Friendly)</h4>
+            <ul>
+              <li>
+                <strong>Student Devices:</strong> 1:1 or 2:1 (Pair Programming)
+                Chromebooks, laptops, or desktops with minimum 4GB RAM and
+                modern web browser (Chrome, Edge, Safari, or Firefox).
+              </li>
+              <li>
+                <strong>Cloud/Local Python IDE:</strong> Zero-install browser
+                IDE supporting Python 3 + <code>turtle</code> (e.g.,
+                <em>Trinket.io</em>, <em>EduBlocks</em> for block-to-text, or
+                <em>CMU CS Academy / Brython</em>), PLUS an offline fallback
+                (<em>Thonny IDE</em> pre-installed on local machines or USB
+                drives in case of internet outages).
+              </li>
+              <li>
+                <strong>Socratic AI Platform:</strong> District-approved
+                classroom sandbox with system-prompt lock (e.g., MagicSchool
+                Student Room, Khanmigo, or school-hosted local Ollama/Llama-3
+                endpoint).
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Physical &amp; Assistive Classroom Supplies</h4>
+            <ul>
+              <li>
+                <strong>Unplugged &amp; Tactile Kits:</strong> 15 sets of
+                laminated Parson's Problem code strips (Mat. #5), 3 clear
+                storage bins with color-coded index cards (LP #1),
+                raised-line/embossed coordinate grids with wiki-stix (Mat. #9),
+                and laminated Driver/Navigator desk tents (Mat. #6).
+              </li>
+              <li>
+                <strong>Assistive Technology:</strong> Screen-reader
+                compatibility verified (NVDA, JAWS, ChromeVox), noise-dampening
+                headphones for sensory regulation, and external high-visibility
+                keyboards/mice.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 id="h3-training">
+          3. Teacher Training &amp; Professional Development Requirements
+        </h3>
+        <p>
+          To ensure teachers without a formal computer science degree can
+          facilitate this course with high confidence, instructors complete a
+          <strong>20-Hour Hybrid PD Program (4 Modules &times; 5 Hours)</strong>
+          prior to launch:
+        </p>
+        <ul>
+          <li>
+            <strong
+              >Module 1 (5 hrs) — Python Foundations through a Novice
+              Lens:</strong
+            >
+            Teachers work through the exact Week 1–6 coding tasks using the
+            PRIMM methodology, intentionally triggering and diagnosing common
+            middle-school syntax errors.
+          </li>
+          <li>
+            <strong
+              >Module 2 (5 hrs) — Facilitating Inclusive CS &amp; UDL:</strong
+            >
+            Training on running structured Pair Programming (preventing one
+            partner from dominating), using bimodal block-to-text scaffolds, and
+            supporting MLL and neurodivergent learners.
+          </li>
+          <li>
+            <strong
+              >Module 3 (5 hrs) — Managing the Socratic AI Classroom:</strong
+            >
+            Hands-on practice configuring the AI sandbox guardrails, monitoring
+            the live student prompt dashboard, coaching students away from "Red
+            Prompts" toward "Green Prompts," and auditing Attribution Logs.
+          </li>
+          <li>
+            <strong>Module 4 (5 hrs) — Coaching Open-Ended Capstones:</strong>
+            How to help 10-to-15-year-olds scope a realistic Minimum Viable
+            Product (MVP) in Week 7 so every student finishes with a working,
+            proud showcase artifact in Week 8.
+          </li>
+        </ul>
+
+        <h3 id="h3-challenges">
+          4. Anticipated Challenges &amp; Proactive Solutions Matrix
+        </h3>
+        <div
+          class="table-responsive"
+          tabindex="0"
+          role="region"
+          aria-labelledby="caption-risks"
+        >
+          <table>
+            <caption id="caption-risks">
+              Table 6.2: Classroom Failure Modes, Root Causes, and Engineered
+              Solutions
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Anticipated Challenge</th>
+                <th scope="col">Root Cause in Ages 10–15</th>
+                <th scope="col">
+                  Engineered Solution &amp; Contingency Protocol
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>1. Wide Prior-Skill Gap</strong> (Experienced coders
+                  finish in 8 minutes while novices struggle to type)
+                </td>
+                <td>
+                  Students enter with vastly different typing speeds and prior
+                  Scratch/Python exposure.
+                </td>
+                <td>
+                  Every lesson features a 3-tier
+                  <strong>Mild / Medium / Spicy</strong> studio menu and uses
+                  Parson's Problems to decouple logic from typing speed. Fast
+                  finishers become certified "Peer QA Testers" (using rules
+                  where they may never touch a classmate's keyboard).
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>2. Syntax Frustration &amp; Shutdown</strong> ("My
+                  code is all red and I hate coding!")
+                </td>
+                <td>
+                  Low frustration tolerance for invisible errors (indentation,
+                  missing colons, case sensitivity).
+                </td>
+                <td>
+                  Normalize errors via the classroom "Bug of the Day"
+                  celebration board; deploy the 5-Step Bug Hunter Field Guide
+                  (Mat. #7); allow EduBlocks bimodal block-to-text view during
+                  Weeks 1–3.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>3. Over-Reliance on AI</strong> (Students try to trick
+                  the AI into writing full code)
+                </td>
+                <td>
+                  Desire for quick completion or fear of getting stuck during
+                  project sprints.
+                </td>
+                <td>
+                  Technical system-prompt lock prevents multi-line code output;
+                  mandatory AI Attribution Log (Mat. #15); Capstone Rubric
+                  Criterion 5 requires live/recorded verbal code walkthrough.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong
+                    >4. School Wi-Fi Outage or Cloud Service Downtime</strong
+                  >
+                </td>
+                <td>
+                  Bandwidth bottlenecks when 30 devices access cloud tools
+                  simultaneously.
+                </td>
+                <td>
+                  "Offline Resilience Kit": Local Thonny Python IDE
+                  pre-installed on devices; printed copies of all 16 portfolio
+                  materials; unplugged kinesthetic algorithms and paper
+                  trace-table challenges ready at any moment.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>5. Pair Programming Imbalance</strong> (One partner
+                  hogs the keyboard or partners clash)
+                </td>
+                <td>
+                  Developing social-emotional skills and uneven confidence
+                  levels.
+                </td>
+                <td>
+                  Mandatory 10-minute visual/audio role-switch timer; explicit
+                  Driver/Navigator sentence stems on desks (Mat. #6); option for
+                  structured "Asynchronous Pairing" when needed.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>6. Over-Scoped Capstone Projects</strong> ("I want to
+                  build a 3D multiplayer RPG in 4 days!")
+                </td>
+                <td>
+                  High enthusiasm paired with limited estimation of engineering
+                  complexity.
+                </td>
+                <td>
+                  Mandatory Week 7 Lesson 7.2 "MVP Scoping Gate" (Mat. #12):
+                  students must get teacher sign-off on a 3-function core loop
+                  that can be built in 90 minutes before adding extra levels or
+                  graphics.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         DELIVERABLE 7: REFLECTION ESSAY
+         ====================================================================== -->
+      <section
+        id="deliverable-7"
+        class="deliverable-section"
+        aria-labelledby="h2-deliv-7"
+      >
+        <div class="deliverable-header">
+          <span class="deliverable-label">Deliverable 7</span>
+          <h2 id="h2-deliv-7">Instructional Designer's Reflection Essay</h2>
+          <p>
+            Critical reflection on the design journey across this module,
+            professional growth in the era of generative AI, and concrete
+            applications to future teaching practice.
+          </p>
+        </div>
+
+        <article
+          class="card"
+          aria-labelledby="h3-essay-title"
+          style="padding: 2rem"
+        >
+          <h3 id="h3-essay-title">
+            Designing for Agency, Equity, and Cognitive Rigor in the Age of AI
+            Co-Creation
+          </h3>
+
+          <h4>1. The Learning &amp; Design Journey Across the Module</h4>
+          <p>
+            Designing an eight-week text-based coding curriculum for learners
+            aged 10 to 15 requires navigating one of the most dynamic
+            developmental windows in human cognition. At age 10, many students
+            still anchor their reasoning in concrete, physical representations;
+            by age 15, many are ready for abstract modular decomposition and
+            ethical systems analysis. Furthermore, the transition from visual
+            block-based environments (such as Scratch) to text-based Python has
+            historically acted as an equity filter in K–12 computer science. Too
+            often, traditional curricula introduce Python through dry
+            mathematical exercises and sink-or-swim syntax typing, inadvertently
+            alienating students with dyslexia, emerging keyboarding skills, or
+            multilingual backgrounds who interpret a wall of red compiler
+            tracebacks as proof that they "do not belong" in computing.
+          </p>
+          <p>
+            As I architected
+            <em>Python Pioneers: From Algorithms to Ethical AI Co-Creation</em>,
+            my central design challenge was resolving two competing tensions:
+            first, how to balance structured, explicit instruction with
+            open-ended creative agency; and second, how to integrate generative
+            AI meaningfully without hollowing out the productive struggle
+            required to learn programming. Early in the design process, I
+            realized that neither pure unguided discovery nor rigid rote copying
+            would serve this population. By weaving Sue Sentance’s
+            <strong
+              >PRIMM framework (Predict, Run, Investigate, Modify, Make)</strong
+            >
+            together with kinesthetic unplugged hooks and Parson’s Problems, the
+            curriculum systematically lowers extraneous cognitive load. Students
+            read, trace, and manipulate working code before they are asked to
+            author syntax from a blank screen. Each week builds
+            cumulatively—from physical memory boxes in Week 2, to visual
+            coordinate geometry in Week 3, to branching decisions and loops in
+            Weeks 4–5, and finally to modular functions and capstone engineering
+            in Weeks 6–8.
+          </p>
+
+          <h4>2. Professional Growth: Rethinking Assessment and AI Pedagogy</h4>
+          <p>
+            Developing this package catalyzed significant professional growth in
+            how I conceptualize both Universal Design for Learning (UDL) and
+            Artificial Intelligence in K–12 classrooms. Initially, it is
+            tempting to treat accessibility as a post-hoc accommodation
+            checklist—adding large print or extra time at the end of a unit.
+            However, true UDL requires engineering multiple means of
+            representation, action, and engagement into the core code itself.
+            For example, designing Lesson 3.2 and Lesson 6.4 forced me to
+            confront the visual bias of standard Python
+            <code>turtle</code> graphics. By embedding mandatory console
+            telemetry statements (<code>print(f"[Canvas Telemetry] ...")</code>)
+            alongside tactile coordinate grids, the curriculum ensures that a
+            blind or low-vision student is not given a watered-down alternate
+            assignment, but participates fully in spatial algorithmic reasoning
+            alongside sighted peers. Similarly, embedding quad-lingual syntax
+            anchor charts and normalizing input methods acknowledges that
+            linguistic diversity is an asset in computational problem-solving.
+          </p>
+          <p>
+            Equally transformative was formalizing the pedagogical role of AI.
+            In many schools today, reactions to generative AI swing between
+            reactionary bans and uncritical enthusiasm. Designing the
+            <em>AI Integration Report</em> and the
+            <em>"Ask, Don't Copy" Socratic Prompt Framework</em> (Material #8)
+            sharpened my conviction that AI literacy and foundational coding
+            literacy are mutually reinforcing—provided we sequence them
+            deliberately. Waiting until Week 4 to introduce the Socratic AI
+            sandbox ensures students first internalize how variables, data
+            types, and control flow actually work. Once introduced, positioning
+            the AI strictly as a Socratic debugging partner and requiring the
+            <em>AI Attribution Log</em> (Material #15) transforms what could be
+            a cheating shortcut into a powerful metacognitive scaffold. Students
+            learn that the real superpower of a programmer is not memorizing
+            every punctuation rule in isolation, nor blindly pasting machine
+            output, but decomposing human problems, asking precise diagnostic
+            questions, and verifying system behavior through systematic test
+            cases.
+          </p>
+
+          <h4>
+            3. Concrete Applications to Future Teaching &amp; Instructional
+            Design Practice
+          </h4>
+          <p>
+            This curriculum design experience yields three enduring commitments
+            that will shape my future instructional design and classroom
+            practice across all STEM disciplines:
+          </p>
+          <ol>
+            <li>
+              <strong
+                >Designing for "Explainability" Over Mere Artifact
+                Production:</strong
+              >
+              In an era where AI can generate syntactically valid code in
+              milliseconds, a static file submission is no longer sufficient
+              evidence of student learning. Moving forward, all summative
+              project rubrics I design will pair artifact creation with
+              multimodal explainability checkpoints—whether through live demos,
+              captioned screencasts, or annotated code tours—empowering diverse
+              learners to prove conceptual ownership in the modality that best
+              honors their strengths.
+            </li>
+            <li>
+              <strong
+                >Institutionalizing Collaborative Protocols and Error
+                Normalization:</strong
+              >
+              Watching how structured Pair Programming (with explicit
+              Driver/Navigator sentence stems and role-switch timers) and the
+              5-Step Bug Hunter Field Guide transform classroom culture
+              reinforces that debugging is as much an emotional skill as a
+              technical one. I will continue to build explicit socio-emotional
+              protocols into technical curricula so that errors are celebrated
+              as diagnostic data rather than personal failures.
+            </li>
+            <li>
+              <strong
+                >Sustaining Iterative, Data-Informed Curriculum
+                Stewardship:</strong
+              >
+              A curriculum is never truly finished until it meets learners in
+              the classroom. By pairing the Week 1 Diagnostic Survey with the
+              Week 8 Metacognitive Growth Journal and analyzing student Socratic
+              AI prompt logs, educators gain an unprecedented window into the
+              exact misconceptions students encounter in real time. In future
+              iterations, I plan to use these anonymized debugging trends to
+              continually refine our Parson’s Problems and unplugged
+              hooks—ensuring that every 10-to-15-year-old leaves the classroom
+              not merely knowing how to write a Python loop, but viewing
+              themselves as capable, ethical architects of our digital future.
+            </li>
+          </ol>
+        </article>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-container">
+        <p>
+          <strong
+            >Python Pioneers: From Algorithms to Ethical AI Co-Creation (Ages
+            10–15)</strong
+          >
+          — Complete Classroom Instructional Design Package.
+        </p>
+        <p>Built with Love Karima Mahmoud </p>
+      </div>
+    </footer>
+
+    <!-- Minimal Accessible JavaScript for Visual Preference Toggles -->
+    <script>
+      function toggleMode(className, btnId) {
+        const body = document.body;
+        const btn = document.getElementById(btnId);
+        const isActive = body.classList.toggle(className);
+        btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      }
+    </script>
+  </body>
+</html>
